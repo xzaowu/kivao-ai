@@ -1,0 +1,5 @@
+{
+  "extends": "./packages/config/tsconfig.json",
+  "compilerOptions": { "noEmit": true, "types": ["node"] },
+  "include": ["vitest.config.ts", "apps/**/*.test.ts", "packages/**/*.test.ts", "apps/api/drizzle.config.ts", "packages/config/vite.ts"]
+}

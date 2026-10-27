@@ -1,0 +1,5 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json", "style": "new-york", "rsc": false, "tsx": true,
+  "tailwind": { "config": "", "css": "src/styles.css", "baseColor": "neutral", "cssVariables": true },
+  "aliases": { "components": "@kivao/ui/components", "ui": "@kivao/ui/components", "utils": "@kivao/ui/lib/utils", "lib": "@kivao/ui/lib", "hooks": "@kivao/ui/hooks" }
+}

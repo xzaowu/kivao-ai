@@ -1,0 +1,25 @@
+@import "tailwindcss";
+@source "./**/*.{ts,tsx}";
+
+/* Neutral shell tokens only. The approved KIVAO brand and scheme C come in phase two. */
+:root {
+  --background: #fafafa; --foreground: #171717;
+  --primary: #252525; --primary-foreground: #fff;
+  --muted: #f0f0f0; --muted-foreground: #525252;
+  --accent: #e8e8e8; --accent-foreground: #171717;
+  --border: #dedede; --input: #b5b5b5; --ring: #404040;
+}
+@theme inline {
+  --color-background: var(--background); --color-foreground: var(--foreground);
+  --color-primary: var(--primary); --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted); --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent); --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border); --color-input: var(--input); --color-ring: var(--ring);
+}
+@layer base {
+  * { border-color: var(--border); }
+  body { margin: 0; background: var(--background); color: var(--foreground); font-family: ui-sans-serif, system-ui, sans-serif; font-size: 16px; line-height: 1.65; }
+  a, button { -webkit-tap-highlight-color: transparent; }
+  a:focus-visible { outline: 2px solid var(--ring); outline-offset: 4px; }
+  ::selection { background: var(--foreground); color: var(--background); }
+}

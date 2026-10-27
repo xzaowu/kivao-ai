@@ -1,0 +1,27 @@
+{
+  "name": "@kivao/web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "typecheck": "tsc --noEmit",
+    "preview": "vite preview --host 127.0.0.1 --port 4173 --strictPort"
+  },
+  "dependencies": {
+    "@kivao/contracts": "workspace:*",
+    "@kivao/ui": "workspace:*",
+    "@tanstack/react-query": "5.105.0",
+    "@tanstack/react-router": "1.170.46",
+    "react": "19.2.9",
+    "react-dom": "19.2.9"
+  },
+  "devDependencies": {
+    "@kivao/config": "workspace:*",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "typescript": "5.9.3",
+    "vite": "7.3.7"
+  }
+}
