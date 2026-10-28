@@ -22,7 +22,8 @@
     "openapi": "pnpm build:packages && pnpm --filter @kivao/api openapi",
     "db:generate": "pnpm --filter @kivao/api db:generate",
     "db:migrate": "pnpm --filter @kivao/api db:migrate",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "test:admin": "playwright test --config apps/admin/playwright.config.ts"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",

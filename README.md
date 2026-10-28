@@ -1,6 +1,6 @@
 # KIVAO
 
-**早期开发项目。AI 生成功能尚未真实接入。** 前台已将 KIVAO V2 方案 C 交互原型迁移为 React：开始页、图片／视频工作区、场景库、创作计划、版本调整、审核保存、作品与素材、节点画布均可体验。三个核心场景调用本地 Mock API；执行与版本结果为明确标识的前端演示，不调用真实模型，不实现登录、充值、扣费或真实任务执行。Admin 仍为独立外壳，无真实管理功能或认证。
+**早期开发项目。AI 生成功能尚未真实接入。** 前台已将 KIVAO V2 方案 C 交互原型迁移为 React：开始页、图片／视频工作区、场景库、创作计划、版本调整、审核保存、作品与素材、节点画布均可体验。三个核心场景调用本地 Mock API；执行与版本结果为明确标识的前端演示，不调用真实模型，不实现登录、充值、扣费或真实任务执行。Admin 已实现基于 shadcn-admin 的可交互管理 UI，含数据概览、模型与供应商、场景和任务管理；所有数据与操作为前端 Mock，无真实后台管理或认证。
 
 本仓库从空仓库独立初始化，不包含旧私有仓库的代码、Git 历史、内部治理资料、测试证据或素材。项目许可证待 Human 确认，当前没有授予项目代码的开源许可；第三方组件仍受各自许可证约束，见 [第三方声明](THIRD_PARTY_NOTICES.md)。
 
@@ -26,19 +26,20 @@ pnpm dev
 | OpenAPI | http://127.0.0.1:3001/openapi.json |
 | Worker | 独立空闲进程，输出启动日志；不消费任何任务 |
 
-无需 `.env`、PostgreSQL 或其他基础设施即可运行。需要覆盖端口时，可复制 `.env.example` 为根目录 `.env`；不要提交本地环境文件。修改 API 端口时同步修改 `API_PROXY_TARGET`。Web 和 Admin 在开发时通过 Vite 同源代理访问 `/api`。
+无需 `.env`、PostgreSQL 或其他基础设施即可运行。需要覆盖端口时，可复制 `.env.example` 为根目录 `.env`；不要提交本地环境文件。修改 API 端口时同步修改 `API_PROXY_TARGET`。Web 在开发时通过 Vite 同源代理访问 `/api`；Admin 本轮使用独立内存 Mock，不请求 API。
 
 所有命令均从根目录运行：
 
 | 命令 | 用途 |
 | --- | --- |
 | `pnpm dev` | 先构建共享包，再同时监听四个应用与共享包 |
-| `pnpm dev:web` / `pnpm dev:admin` | 单独启动相应界面；请求示例需要另开 API |
+| `pnpm dev:web` / `pnpm dev:admin` | 单独启动相应界面；Web 核心场景需要另开 API，Admin 不需要 |
 | `pnpm dev:api` / `pnpm dev:worker` | 独立启动 API / Worker |
 | `pnpm typecheck` | 应用、共享包、配置和测试的 TypeScript 检查 |
 | `pnpm lint` | ESLint（零警告） |
 | `pnpm test` | Vitest 契约、Mock API、前端版本与持久化逻辑测试，无外部服务 |
-| `pnpm test:e2e` | Playwright 的 1440×900 桌面与 390×844 手机浏览器验收 |
+| `pnpm test:e2e` | Web 的 1440×900 桌面与 390×844 手机浏览器验收 |
+| `pnpm test:admin` | Admin 的两种视口、主题、表单、筛选、详情与模拟操作验收 |
 | `pnpm build` | 构建共享包、Web、Admin、API 和 Worker |
 | `pnpm openapi` | 从路由 Zod Schema 生成 `docs/openapi.json` |
 | `pnpm db:generate` | 根据 Drizzle Schema 生成迁移，不连接数据库 |
@@ -51,7 +52,7 @@ pnpm dev
 ```text
 apps/
   web/                方案 C React 前台、组件、演示适配层与浏览器测试
-  admin/              独立后台外壳与场景管理占位页
+  admin/              可交互管理 UI 与独立 Mock 适配层
   api/                Fastify Mock 路由、Drizzle 定义与迁移
   worker/             独立进程外壳，无队列和真实执行
 packages/
@@ -111,3 +112,5 @@ PostgreSQL/Drizzle 仅提供可迁移的初始表结构和显式连接入口；M
 前台沿用用户提供的方案 C 品牌标记、媒体与样式，并新增同一蓝色体系下的本地深浅主题和明确标识的积分展示。基准现为用户提供的 2026-10-28 修正源码：图片／视频总览与具名工具、节点画布及作品／素材整理均为可运行的前端演示。画布支持模板、拖动、角色连接、撤销／重做与独立本地保存；它不是通用工作流执行引擎。真实登录、素材上传、生成执行、计费及服务端作品保存分别按后续需求实现。
 
 更多定义与接口说明见 [API 边界](docs/api.md)。选型参考：[Fastify Zod Provider](https://github.com/turkerdev/fastify-type-provider-zod)、[Vite 环境要求](https://vite.dev/guide/)、[shadcn/ui Monorepo](https://ui.shadcn.com/docs/monorepo)、[Drizzle PostgreSQL](https://orm.drizzle.team/docs/get-started/postgresql-new)。版本固定在各 `package.json` 与 `pnpm-lock.yaml`，未采用 Vite 的下一主版本或 Drizzle 的预发布版本。根目录对 Drizzle Kit 的旧 `@esbuild-kit/core-utils` 间接依赖覆盖了 esbuild 安全版本；升级 Drizzle Kit 后可重新评估该覆盖，迁移生成已按覆盖后的工具链验证。
+
+管理后台的页面、Mock 边界、运行方法和第三方组件来源见 [Admin 开发说明](docs/admin.md)。

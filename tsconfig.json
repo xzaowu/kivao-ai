@@ -2,8 +2,14 @@
   "extends": "./packages/config/tsconfig.json",
   "compilerOptions": {
     "noEmit": true,
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
-    "types": ["node"],
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "types": [
+      "node"
+    ],
     "module": "ESNext",
     "moduleResolution": "Bundler"
   },
@@ -14,6 +20,8 @@
     "apps/api/drizzle.config.ts",
     "packages/config/vite.ts",
     "playwright.config.ts",
-    "apps/web/e2e/**/*.ts"
+    "apps/web/e2e/**/*.ts",
+    "apps/admin/e2e/**/*.ts",
+    "apps/admin/playwright.config.ts"
   ]
 }
