@@ -1,0 +1,879 @@
+{
+  "categories": [
+    "电商商品",
+    "服装人像",
+    "视频内容",
+    "品牌图文",
+    "门店营销",
+    "后期处理"
+  ],
+  "defaults": {
+    "product": {
+      "channel": "电商上新",
+      "style": "自然日光",
+      "count": "4",
+      "ratio": "3:4"
+    },
+    "tryon": {
+      "setting": "简洁影棚",
+      "composition": "半身展示",
+      "count": "2",
+      "ratio": "3:4"
+    },
+    "video": {
+      "channel": "视频号横屏",
+      "reference": "镜头结构与节奏",
+      "captions": "简洁字幕",
+      "count": "1",
+      "ratio": "16:9"
+    }
+  },
+  "scenes": [
+    {
+      "id": "product",
+      "name": "商品套图",
+      "category": "电商商品",
+      "output": "图片",
+      "input": "一张图片",
+      "image": "tea",
+      "summary": "把一张商品照，变成一套上新视觉。",
+      "keywords": "产品 上架 电商 主图 套图 新品 茶",
+      "ready": true,
+      "tag": "新手推荐",
+      "roles": [
+        {
+          "id": "product",
+          "label": "商品正面图",
+          "required": true,
+          "media": "image",
+          "demo": "tea",
+          "help": "看清包装、主体和品牌标识；这是必须保留的商品。"
+        },
+        {
+          "id": "detail",
+          "label": "商品细节图",
+          "required": false,
+          "media": "image",
+          "demo": "tea-detail",
+          "help": "补充材质和包装细节，帮助核对真实外观。"
+        }
+      ],
+      "checks": [
+        "商品外观与包装信息一致",
+        "文字和品牌标识可用",
+        "每张图的用途与构图合适"
+      ],
+      "adjustments": ["背景更简洁", "强化材质细节", "减少装饰元素"],
+      "config": [
+        {
+          "key": "channel",
+          "label": "使用渠道",
+          "options": ["电商上新", "社媒发布", "品牌官网"]
+        },
+        {
+          "key": "style",
+          "label": "画面方向",
+          "options": ["自然日光", "极简影棚", "温暖生活感"]
+        },
+        {
+          "key": "count",
+          "label": "套图结构",
+          "options": [
+            ["4", "4 张 · 基础上新"],
+            ["6", "6 张 · 多渠道延展"]
+          ]
+        },
+        {
+          "key": "ratio",
+          "label": "画面比例",
+          "options": ["3:4", "1:1", "4:5"]
+        }
+      ],
+      "out": "4–6 张成套图片"
+    },
+    {
+      "id": "tryon",
+      "name": "AI 换装",
+      "category": "服装人像",
+      "output": "图片",
+      "input": "人物与服装",
+      "image": "tryon",
+      "summary": "让服装穿在指定模特身上，保留人物特征。",
+      "keywords": "换衣 衣服 模特 上身 搭配 换装 人像",
+      "ready": true,
+      "tag": "按角色准备",
+      "roles": [
+        {
+          "id": "model",
+          "label": "模特图",
+          "required": true,
+          "media": "image",
+          "demo": "model",
+          "help": "清晰、正面的成年人物图。保留人物身份、脸部与姿态。"
+        },
+        {
+          "id": "garment",
+          "label": "服装正面图",
+          "required": true,
+          "media": "image",
+          "demo": "garment",
+          "help": "完整展示领口、纽扣、袖口与颜色；这是需要穿上的服装。"
+        },
+        {
+          "id": "garmentDetail",
+          "label": "服装细节图",
+          "required": false,
+          "media": "image",
+          "demo": "garment",
+          "help": "补充面料或特殊结构，可稍后添加。"
+        }
+      ],
+      "checks": [
+        "人物身份、脸部与姿态一致",
+        "服装颜色、结构与细节正确",
+        "手部、袖口和边缘自然"
+      ],
+      "adjustments": ["保留人物特征", "服装颜色更准确", "减少边缘瑕疵"],
+      "config": [
+        {
+          "key": "setting",
+          "label": "拍摄情境",
+          "options": ["简洁影棚", "自然街景", "室内生活"]
+        },
+        {
+          "key": "composition",
+          "label": "展示方式",
+          "options": ["半身展示", "全身搭配"]
+        },
+        {
+          "key": "count",
+          "label": "输出数量",
+          "options": [
+            ["2", "2 张 · 正面与搭配"],
+            ["4", "4 张 · 加细节与场景"]
+          ]
+        },
+        {
+          "key": "ratio",
+          "label": "画面比例",
+          "options": ["3:4", "2:3", "1:1"]
+        }
+      ],
+      "out": "2–4 张换装效果图"
+    },
+    {
+      "id": "video",
+      "name": "参考视频创作",
+      "category": "视频内容",
+      "output": "视频",
+      "input": "参考视频",
+      "image": "bakery",
+      "summary": "借鉴镜头与节奏，用自己的素材重新讲故事。",
+      "keywords": "短片 复刻 参考视频 门店 拍摄 镜头 视频",
+      "ready": true,
+      "tag": "先看镜头计划",
+      "roles": [
+        {
+          "id": "reference",
+          "label": "参考短片",
+          "required": true,
+          "media": "video",
+          "demo": "reference",
+          "help": "参考镜头结构和节奏，不直接复制原视频的品牌与内容。"
+        },
+        {
+          "id": "subject",
+          "label": "自己的产品／门店素材",
+          "required": true,
+          "media": "image",
+          "demo": "bakery",
+          "help": "这是最终短片要展示的主体；与参考视频分开绑定。"
+        }
+      ],
+      "checks": [
+        "镜头结构与节奏符合预期",
+        "画面展示的是本次主体素材",
+        "字幕与品牌内容可用"
+      ],
+      "adjustments": ["节奏更利落", "保留镜头结构", "字幕更克制"],
+      "config": [
+        {
+          "key": "channel",
+          "label": "发布渠道",
+          "options": ["视频号横屏", "门店屏幕", "公众号嵌入"]
+        },
+        {
+          "key": "reference",
+          "label": "参考哪些部分",
+          "options": ["镜头结构与节奏", "仅镜头结构", "仅叙事顺序"]
+        },
+        {
+          "key": "captions",
+          "label": "字幕方式",
+          "options": ["简洁字幕", "无字幕"]
+        }
+      ],
+      "out": "1 条短片＋3 段镜头计划"
+    },
+    {
+      "id": "catalog-1",
+      "name": "电商白底主图",
+      "category": "电商商品",
+      "output": "图片",
+      "input": "一张图片",
+      "image": "serum",
+      "keywords": "商品 抠图 白底 上架",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图片与尺寸版本"
+    },
+    {
+      "id": "catalog-2",
+      "name": "商品详情页",
+      "category": "电商商品",
+      "output": "图片",
+      "input": "多张图片",
+      "image": "serum",
+      "keywords": "详情 卖点 产品",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图片与尺寸版本"
+    },
+    {
+      "id": "catalog-3",
+      "name": "品牌 A+ 内容",
+      "category": "电商商品",
+      "output": "图片",
+      "input": "多张图片",
+      "image": "tea",
+      "keywords": "品牌 内容 亚马逊",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图片与尺寸版本"
+    },
+    {
+      "id": "catalog-4",
+      "name": "服装搭配图",
+      "category": "服装人像",
+      "output": "图片",
+      "input": "人物与服装",
+      "image": "tryon",
+      "keywords": "搭配 模特 穿搭",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图片与尺寸版本"
+    },
+    {
+      "id": "catalog-5",
+      "name": "模特背景替换",
+      "category": "服装人像",
+      "output": "图片",
+      "input": "一张图片",
+      "image": "model",
+      "keywords": "背景 人像 替换",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图片与尺寸版本"
+    },
+    {
+      "id": "catalog-6",
+      "name": "产品开箱短片",
+      "category": "视频内容",
+      "output": "视频",
+      "input": "多张图片",
+      "image": "serum",
+      "keywords": "开箱 短片 商品",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "短片与镜头计划"
+    },
+    {
+      "id": "catalog-7",
+      "name": "小红书图文",
+      "category": "品牌图文",
+      "output": "图文",
+      "input": "一张图片",
+      "image": "tea",
+      "keywords": "小红书 社媒 图文",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图文内容组合"
+    },
+    {
+      "id": "catalog-8",
+      "name": "门店上新海报",
+      "category": "门店营销",
+      "output": "图片",
+      "input": "一张图片",
+      "image": "bakery",
+      "keywords": "门店 海报 上新",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图片与尺寸版本"
+    },
+    {
+      "id": "catalog-9",
+      "name": "图片清晰修复",
+      "category": "后期处理",
+      "output": "图片",
+      "input": "一张图片",
+      "image": "serum",
+      "keywords": "高清 修复 清晰",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图片与尺寸版本"
+    },
+    {
+      "id": "catalog-10",
+      "name": "商品卖点图",
+      "category": "电商商品",
+      "output": "图片",
+      "input": "一张图片",
+      "image": "tea",
+      "keywords": "卖点 商品",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图片与尺寸版本"
+    },
+    {
+      "id": "catalog-11",
+      "name": "商品尺寸说明",
+      "category": "电商商品",
+      "output": "图片",
+      "input": "多张图片",
+      "image": "serum",
+      "keywords": "规格 尺寸",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图片与尺寸版本"
+    },
+    {
+      "id": "catalog-12",
+      "name": "节日商品视觉",
+      "category": "电商商品",
+      "output": "图片",
+      "input": "一张图片",
+      "image": "tea",
+      "keywords": "节日 上新",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图片与尺寸版本"
+    },
+    {
+      "id": "catalog-13",
+      "name": "服装色系展示",
+      "category": "服装人像",
+      "output": "图片",
+      "input": "人物与服装",
+      "image": "garment",
+      "keywords": "服装 颜色 展示",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图片与尺寸版本"
+    },
+    {
+      "id": "catalog-14",
+      "name": "人像构图延展",
+      "category": "服装人像",
+      "output": "图片",
+      "input": "一张图片",
+      "image": "model",
+      "keywords": "人像 延展",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图片与尺寸版本"
+    },
+    {
+      "id": "catalog-15",
+      "name": "同款系列展示",
+      "category": "服装人像",
+      "output": "图片",
+      "input": "多张图片",
+      "image": "tryon",
+      "keywords": "模特 系列",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图片与尺寸版本"
+    },
+    {
+      "id": "catalog-16",
+      "name": "门店探店短片",
+      "category": "视频内容",
+      "output": "视频",
+      "input": "参考视频",
+      "image": "bakery",
+      "keywords": "探店 门店 参考",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "短片与镜头计划"
+    },
+    {
+      "id": "catalog-17",
+      "name": "商品展示短片",
+      "category": "视频内容",
+      "output": "视频",
+      "input": "多张图片",
+      "image": "serum",
+      "keywords": "商品 短片",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "短片与镜头计划"
+    },
+    {
+      "id": "catalog-18",
+      "name": "教程分镜",
+      "category": "视频内容",
+      "output": "视频",
+      "input": "参考视频",
+      "image": "bakery",
+      "keywords": "教程 分镜 视频",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "短片与镜头计划"
+    },
+    {
+      "id": "catalog-19",
+      "name": "品牌公告图文",
+      "category": "品牌图文",
+      "output": "图文",
+      "input": "一张图片",
+      "image": "serum",
+      "keywords": "公告 品牌",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图文内容组合"
+    },
+    {
+      "id": "catalog-20",
+      "name": "门店每日菜单",
+      "category": "门店营销",
+      "output": "图片",
+      "input": "一张图片",
+      "image": "bakery",
+      "keywords": "菜单 门店",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图片与尺寸版本"
+    },
+    {
+      "id": "catalog-21",
+      "name": "图片尺寸适配",
+      "category": "后期处理",
+      "output": "图片",
+      "input": "一张图片",
+      "image": "tea",
+      "keywords": "尺寸 适配",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图片与尺寸版本"
+    },
+    {
+      "id": "catalog-22",
+      "name": "商品场景延展",
+      "category": "电商商品",
+      "output": "图片",
+      "input": "一张图片",
+      "image": "tea",
+      "keywords": "场景 延展",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图片与尺寸版本"
+    },
+    {
+      "id": "catalog-23",
+      "name": "多平台商品封面",
+      "category": "电商商品",
+      "output": "图片",
+      "input": "一张图片",
+      "image": "serum",
+      "keywords": "封面 平台",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图片与尺寸版本"
+    },
+    {
+      "id": "catalog-24",
+      "name": "商品包装展示",
+      "category": "电商商品",
+      "output": "图片",
+      "input": "多张图片",
+      "image": "tea",
+      "keywords": "包装 产品",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图片与尺寸版本"
+    },
+    {
+      "id": "catalog-25",
+      "name": "季节新品物料",
+      "category": "电商商品",
+      "output": "图片",
+      "input": "多张图片",
+      "image": "serum",
+      "keywords": "新品 季节",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图片与尺寸版本"
+    },
+    {
+      "id": "catalog-26",
+      "name": "配饰搭配展示",
+      "category": "服装人像",
+      "output": "图片",
+      "input": "人物与服装",
+      "image": "tryon",
+      "keywords": "配饰 搭配",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图片与尺寸版本"
+    },
+    {
+      "id": "catalog-27",
+      "name": "穿搭社媒封面",
+      "category": "服装人像",
+      "output": "图片",
+      "input": "一张图片",
+      "image": "model",
+      "keywords": "穿搭 封面",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图片与尺寸版本"
+    },
+    {
+      "id": "catalog-28",
+      "name": "服装面料细节",
+      "category": "服装人像",
+      "output": "图片",
+      "input": "一张图片",
+      "image": "garment",
+      "keywords": "面料 细节",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图片与尺寸版本"
+    },
+    {
+      "id": "catalog-29",
+      "name": "模特系列构图",
+      "category": "服装人像",
+      "output": "图片",
+      "input": "多张图片",
+      "image": "tryon",
+      "keywords": "模特 构图",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图片与尺寸版本"
+    },
+    {
+      "id": "catalog-30",
+      "name": "品牌故事短片",
+      "category": "视频内容",
+      "output": "视频",
+      "input": "参考视频",
+      "image": "tea",
+      "keywords": "品牌 故事 视频",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "短片与镜头计划"
+    },
+    {
+      "id": "catalog-31",
+      "name": "活动预告短片",
+      "category": "视频内容",
+      "output": "视频",
+      "input": "多张图片",
+      "image": "bakery",
+      "keywords": "活动 预告",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "短片与镜头计划"
+    },
+    {
+      "id": "catalog-32",
+      "name": "短视频封面",
+      "category": "视频内容",
+      "output": "图片",
+      "input": "一张图片",
+      "image": "bakery",
+      "keywords": "短视频 封面",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图片与尺寸版本"
+    },
+    {
+      "id": "catalog-33",
+      "name": "口播镜头计划",
+      "category": "视频内容",
+      "output": "视频",
+      "input": "参考视频",
+      "image": "model",
+      "keywords": "口播 分镜",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "短片与镜头计划"
+    },
+    {
+      "id": "catalog-34",
+      "name": "品牌节日海报",
+      "category": "品牌图文",
+      "output": "图片",
+      "input": "一张图片",
+      "image": "tea",
+      "keywords": "节日 海报",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图片与尺寸版本"
+    },
+    {
+      "id": "catalog-35",
+      "name": "社媒系列封面",
+      "category": "品牌图文",
+      "output": "图片",
+      "input": "多张图片",
+      "image": "serum",
+      "keywords": "社媒 系列",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图片与尺寸版本"
+    },
+    {
+      "id": "catalog-36",
+      "name": "品牌知识卡片",
+      "category": "品牌图文",
+      "output": "图文",
+      "input": "多张图片",
+      "image": "tea",
+      "keywords": "品牌 知识",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图文内容组合"
+    },
+    {
+      "id": "catalog-37",
+      "name": "长图内容整理",
+      "category": "品牌图文",
+      "output": "图文",
+      "input": "多张图片",
+      "image": "serum",
+      "keywords": "长图 内容",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图文内容组合"
+    },
+    {
+      "id": "catalog-38",
+      "name": "门店活动海报",
+      "category": "门店营销",
+      "output": "图片",
+      "input": "一张图片",
+      "image": "bakery",
+      "keywords": "活动 海报",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图片与尺寸版本"
+    },
+    {
+      "id": "catalog-39",
+      "name": "门店新品图文",
+      "category": "门店营销",
+      "output": "图文",
+      "input": "多张图片",
+      "image": "bakery",
+      "keywords": "新品 图文",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图文内容组合"
+    },
+    {
+      "id": "catalog-40",
+      "name": "餐饮菜品展示",
+      "category": "门店营销",
+      "output": "图片",
+      "input": "一张图片",
+      "image": "bakery",
+      "keywords": "餐饮 菜品",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图片与尺寸版本"
+    },
+    {
+      "id": "catalog-41",
+      "name": "到店路线图文",
+      "category": "门店营销",
+      "output": "图文",
+      "input": "多张图片",
+      "image": "bakery",
+      "keywords": "到店 路线",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图文内容组合"
+    },
+    {
+      "id": "catalog-42",
+      "name": "图片背景清理",
+      "category": "后期处理",
+      "output": "图片",
+      "input": "一张图片",
+      "image": "serum",
+      "keywords": "背景 清理",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图片与尺寸版本"
+    },
+    {
+      "id": "catalog-43",
+      "name": "老照片修复",
+      "category": "后期处理",
+      "output": "图片",
+      "input": "一张图片",
+      "image": "model",
+      "keywords": "老照片 修复",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图片与尺寸版本"
+    },
+    {
+      "id": "catalog-44",
+      "name": "图片批量裁切",
+      "category": "后期处理",
+      "output": "图片",
+      "input": "多张图片",
+      "image": "tea",
+      "keywords": "裁切 批量",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "图片与尺寸版本"
+    },
+    {
+      "id": "catalog-45",
+      "name": "视频比例适配",
+      "category": "后期处理",
+      "output": "视频",
+      "input": "参考视频",
+      "image": "bakery",
+      "keywords": "视频 比例 适配",
+      "summary": "按明确的素材角色与交付结构组织创作。",
+      "ready": false,
+      "roles": [],
+      "out": "短片与镜头计划"
+    }
+  ],
+  "materials": [
+    {
+      "id": "tea",
+      "name": "山间茶事 · 商品正面参考",
+      "asset": "tea",
+      "media": "image",
+      "role": "商品图"
+    },
+    {
+      "id": "tea-detail",
+      "name": "山间茶事 · 包装细节参考",
+      "asset": "tea",
+      "media": "image",
+      "role": "细节图"
+    },
+    {
+      "id": "serum",
+      "name": "AURA · 品牌参考",
+      "asset": "serum",
+      "media": "image",
+      "role": "商品图"
+    },
+    {
+      "id": "model",
+      "name": "成年模特 · 白色上衣",
+      "asset": "model",
+      "media": "image",
+      "role": "模特图"
+    },
+    {
+      "id": "garment",
+      "name": "蓝色亚麻衬衫 · 正面",
+      "asset": "garment",
+      "media": "image",
+      "role": "服装图"
+    },
+    {
+      "id": "reference",
+      "name": "面包房 · 三镜头参考短片",
+      "asset": "bakery-demo",
+      "poster": "bakery",
+      "media": "video",
+      "role": "参考视频"
+    },
+    {
+      "id": "bakery",
+      "name": "巷口面包房 · 门店素材",
+      "asset": "bakery",
+      "media": "image",
+      "role": "主体素材"
+    }
+  ],
+  "cases": [
+    {
+      "id": "case-tea-launch",
+      "sceneId": "product",
+      "title": "一罐春天，完整表达",
+      "inputRefs": ["tea"],
+      "outputSummary": "4张上新视觉 · 商品套图"
+    },
+    {
+      "id": "case-blue-shirt",
+      "sceneId": "tryon",
+      "title": "同一个人，换一种搭配",
+      "inputRefs": ["model", "garment"],
+      "outputSummary": "指定人物＋指定服装 · AI 换装"
+    },
+    {
+      "id": "case-bakery-film",
+      "sceneId": "video",
+      "title": "把清晨的香气，拍成故事",
+      "inputRefs": ["reference", "bakery"],
+      "outputSummary": "3段镜头＋12秒短片 · 参考视频"
+    }
+  ]
+}

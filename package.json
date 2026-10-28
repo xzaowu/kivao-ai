@@ -21,10 +21,12 @@
     "test": "pnpm build:packages && vitest run",
     "openapi": "pnpm build:packages && pnpm --filter @kivao/api openapi",
     "db:generate": "pnpm --filter @kivao/api db:generate",
-    "db:migrate": "pnpm --filter @kivao/api db:migrate"
+    "db:migrate": "pnpm --filter @kivao/api db:migrate",
+    "test:e2e": "playwright test"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
+    "@playwright/test": "1.64.1",
     "@types/node": "22.20.5",
     "eslint": "10.13.0",
     "eslint-plugin-react-hooks": "7.1.1",

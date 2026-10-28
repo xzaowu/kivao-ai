@@ -1,5 +1,19 @@
 {
   "extends": "./packages/config/tsconfig.json",
-  "compilerOptions": { "noEmit": true, "types": ["node"] },
-  "include": ["vitest.config.ts", "apps/**/*.test.ts", "packages/**/*.test.ts", "apps/api/drizzle.config.ts", "packages/config/vite.ts"]
+  "compilerOptions": {
+    "noEmit": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "types": ["node"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler"
+  },
+  "include": [
+    "vitest.config.ts",
+    "apps/**/*.test.ts",
+    "packages/**/*.test.ts",
+    "apps/api/drizzle.config.ts",
+    "packages/config/vite.ts",
+    "playwright.config.ts",
+    "apps/web/e2e/**/*.ts"
+  ]
 }

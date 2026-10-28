@@ -1,0 +1,22 @@
+// Icon geometry preserved from the supplied scheme C prototype.
+export const icons = {
+  spark: 'm12 3 3 6 6 3-6 3-3 6-3-6-6-3 6-3Z',
+  grid: 'M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z',
+  folder: 'M3 7V4h6l3 3h9v13H3z',
+  arrow: 'M4 12h16M14 6l6 6-6 6',
+  back: 'M20 12H4M10 6l-6 6 6 6',
+  plus: 'M12 4v16M4 12h16',
+  search: 'M21 21l-5-5M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0',
+  close: 'm6 6 12 12M18 6 6 18',
+  check: 'm5 12 4 4L19 6',
+  image: 'M3 3h18v18H3zM3 16l5-5 5 5 3-3 5 5M16 7h.01',
+  video: 'M3 5h13v14H3zM16 9l5-3v12l-5-3',
+  clock: 'M12 7v5l3 2M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0',
+  sliders: 'M4 6h16M4 12h16M4 18h16M8 3v6M16 9v6M10 15v6',
+  play: 'm9 5 11 7-11 7Z',
+  upload: 'M12 16V3M7 8l5-5 5 5M4 15v6h16v-6',
+  book: 'M3 4h7l2 2 2-2h7v16h-7l-2 2-2-2H3zM12 6v16',
+  info: 'M12 11v6M12 7h.01M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0',
+  chevron: 'm9 5 7 7-7 7',
+  download: 'M12 3v13M7 11l5 5 5-5M4 18v3h16v-3',
+} as const;

@@ -1,0 +1,653 @@
+/* Start page only: a focused composer with task discovery below. */
+.on-start .content.start-content {
+  padding-top: 0;
+  max-width: 1420px;
+  padding-inline: 40px;
+}
+.on-start .start-hero {
+  padding: 34px 0 22px;
+  max-width: 920px;
+  margin-inline: auto;
+}
+.on-start .start-heading {
+  text-align: center;
+  margin-bottom: 25px;
+}
+.on-start .start-heading .eyebrow {
+  font-size: 10px;
+  letter-spacing: 1.3px;
+  margin-bottom: 13px;
+  color: #7890a5;
+}
+.on-start .start-heading h1 {
+  font-size: 39px;
+  letter-spacing: -1.3px;
+  line-height: 1.5;
+  font-weight: 600;
+}
+.on-start .start-heading h1 span {
+  color: #3479e8;
+}
+.on-start .start-heading > p {
+  font-size: 13px;
+  color: #71879c;
+  line-height: 1.9;
+  margin-top: 9px;
+}
+.on-start .start-composer {
+  background: #fff;
+  border: 1px solid #dce6f2;
+  border-radius: 17px;
+  padding: 18px 22px 18px;
+  box-shadow:
+    0 12px 38px #274e7e09,
+    0 2px 6px #23496f03;
+}
+.on-start .start-composer:focus-within {
+  border-color: #b3cff4;
+  box-shadow: 0 10px 38px #3b82f60b;
+}
+.on-start .start-composer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+.on-start .start-modes {
+  display: flex;
+  gap: 3px;
+  border-radius: 7px;
+  padding: 3px;
+  background: #f2f5fa;
+}
+.on-start .start-modes button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 35px;
+  padding: 7px 14px;
+  border-radius: 5px;
+  font-size: 12px;
+  color: #7a8da0;
+  line-height: 1.5;
+}
+.on-start .start-modes svg {
+  width: 15px;
+  height: 15px;
+}
+.on-start .start-modes button[aria-pressed='true'] {
+  background: #fff;
+  color: #235dba;
+  box-shadow: 0 1px 5px #0b25400a;
+  font-weight: 600;
+}
+.on-start .start-demo-label {
+  font-size: 10px;
+  color: #8b9daf;
+  white-space: nowrap;
+}
+.on-start .start-prompt {
+  display: block;
+  width: 100%;
+  min-height: 111px;
+  max-height: 240px;
+  resize: vertical;
+  margin-top: 13px;
+  padding: 12px 2px;
+  border: 0;
+  background: none;
+  font-size: 14px;
+  line-height: 1.9;
+  color: #173a5b;
+  outline: none;
+}
+.on-start .start-prompt::placeholder {
+  color: #8b9fb3;
+}
+.on-start .start-prompt:focus-visible {
+  outline: none;
+}
+.on-start .start-suggestions {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+  margin: 10px 0 18px;
+}
+.on-start .start-suggestions button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 11px;
+  border: 1px solid #e5ecf5;
+  border-radius: 7px;
+  background: #f9fbfe;
+  min-height: 34px;
+  padding: 7px 11px;
+  font-size: 11px;
+  color: #738ca5;
+  flex: 1;
+  white-space: nowrap;
+}
+.on-start .start-suggestions button:hover {
+  color: #336bb5;
+  background: #edf4ff;
+  border-color: #d2e3fa;
+}
+.on-start .start-suggestions svg {
+  width: 12px;
+  height: 12px;
+  color: #99b1ca;
+}
+.on-start .start-composer-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-top: 1px solid #edf2f7;
+  padding-top: 14px;
+}
+.on-start .start-composer-actions > div {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+.on-start .start-attach-button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #526f8b;
+  font-size: 12px;
+  min-height: 37px;
+  padding: 7px 2px;
+}
+.on-start .start-attach-button svg {
+  width: 16px;
+  height: 16px;
+}
+.on-start .start-composer-actions > div > span {
+  font-size: 10px;
+  color: #8b9eb0;
+}
+.on-start .start-submit {
+  min-height: 42px;
+  min-width: 132px;
+  font-size: 12px;
+  gap: 13px;
+  border-radius: 8px;
+  padding: 10px 17px;
+}
+.on-start .start-submit svg {
+  width: 15px;
+  height: 15px;
+}
+.on-start .start-helper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  font-size: 10px;
+  color: #8499ac;
+  margin: 11px 0 0;
+  line-height: 1.9;
+  flex-wrap: wrap;
+}
+.on-start .start-helper .text-link {
+  font-size: 10px;
+  min-height: 24px;
+  gap: 5px;
+  color: #617f9e;
+}
+.on-start .start-helper svg {
+  width: 11px;
+  height: 11px;
+}
+.on-start .start-attachments {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin: 4px 0 13px;
+}
+.on-start .start-attachment {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 7px 7px 8px;
+  border: 1px solid #dfe8f2;
+  border-radius: 7px;
+  background: #f7faff;
+  max-width: 280px;
+  min-width: 0;
+}
+.on-start .start-attachment > img,
+.on-start .start-file-icon {
+  width: 38px;
+  height: 42px;
+  flex: none;
+  object-fit: cover;
+  border-radius: 4px;
+}
+.on-start .start-file-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e7effa;
+  color: #7195bf;
+}
+.on-start .start-file-icon svg {
+  width: 18px;
+  height: 18px;
+}
+.on-start .start-attachment > div {
+  min-width: 0;
+}
+.on-start .start-attachment b {
+  display: block;
+  font-size: 10px;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 165px;
+}
+.on-start .start-attachment small {
+  font-size: 9px;
+  display: block;
+  color: #8098ac;
+  line-height: 1.8;
+}
+.on-start .start-attachment .icon-button {
+  width: 27px;
+  height: 30px;
+  flex: none;
+}
+.on-start .start-attachment .icon-button svg {
+  width: 13px;
+  height: 13px;
+}
+.on-start .start-continue {
+  margin: 5px 0 24px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+.on-start .start-continue .section-heading h2,
+.on-start .start-tools .section-heading h2,
+.on-start .start-cases .section-heading h2 {
+  font-size: 18px;
+}
+.on-start .start-continue .section-heading p,
+.on-start .start-tools .section-heading p,
+.on-start .start-cases .section-heading p {
+  font-size: 11px;
+  color: #8196a9;
+}
+.on-start .start-tools {
+  border-top: 1px solid #e2eaf2;
+  padding-top: 23px;
+  margin-top: 2px;
+}
+.on-start .start-tool-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.on-start .start-tool {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  padding: 14px;
+  background: white;
+  border: 1px solid #e0e8f1;
+  border-radius: 10px;
+}
+.on-start .start-tool > img {
+  width: 76px;
+  height: 94px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex: none;
+}
+.on-start .start-tool .asset-tryon {
+  object-position: 50% 14%;
+}
+.on-start .start-tool > div {
+  min-width: 0;
+  flex: 1;
+}
+.on-start .start-tool h3 {
+  font-size: 15px;
+  font-weight: 600;
+}
+.on-start .start-tool p {
+  font-size: 10px;
+  line-height: 1.8;
+  color: #7a91a6;
+  margin-top: 5px;
+  min-height: 36px;
+}
+.on-start .start-tool > div > div {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-top: 5px;
+}
+.on-start .start-tool .text-link {
+  font-size: 10px;
+  min-height: 27px;
+  gap: 5px;
+  color: #5b7c9e;
+  white-space: nowrap;
+}
+.on-start .start-tool .text-link:first-child {
+  color: #2865bc;
+  font-weight: 500;
+}
+.on-start .start-tool .text-link svg {
+  width: 11px;
+  height: 11px;
+}
+.on-start .start-cases {
+  margin-top: 28px;
+}
+.on-start .start-cases .example-card .scene-art {
+  aspect-ratio: 1.65;
+}
+.on-start .start-cases .example-card h3 {
+  font-size: 14px;
+}
+.on-start .start-cases .example-card > div:last-child > span {
+  font-size: 10px;
+}
+.start-match .suggested-scene em {
+  font-size: 10px;
+  line-height: 1.8;
+  font-style: normal;
+  white-space: normal;
+}
+.start-match .suggested-scene small {
+  font-size: 11px;
+  line-height: 1.8;
+}
+.start-match .suggested-scene b {
+  font-size: 14px;
+}
+@media (min-width: 761px) and (max-width: 1150px) {
+  .on-start .content.start-content {
+    padding-inline: 26px;
+  }
+  .on-start .start-hero {
+    padding-top: 28px;
+  }
+  .on-start .start-heading h1 {
+    font-size: 34px;
+  }
+  .on-start .start-tool {
+    padding: 11px;
+    gap: 10px;
+  }
+  .on-start .start-tool > img {
+    width: 62px;
+    height: 90px;
+  }
+  .on-start .start-tool h3 {
+    font-size: 14px;
+  }
+  .on-start .start-tool > div > div {
+    gap: 7px;
+    flex-wrap: wrap;
+  }
+  .on-start .start-tool .text-link {
+    font-size: 9px;
+  }
+  .on-start .start-suggestions button {
+    font-size: 10px;
+    gap: 7px;
+    padding-inline: 9px;
+  }
+  .on-start .start-composer-actions > div > span {
+    font-size: 9px;
+  }
+}
+@media (max-width: 760px) {
+  .on-start .content.start-content {
+    padding-inline: 16px;
+  }
+  .on-start .start-hero {
+    padding: 24px 0 16px;
+  }
+  .on-start .start-heading {
+    margin-bottom: 19px;
+  }
+  .on-start .start-heading .eyebrow {
+    font-size: 8px;
+    letter-spacing: 0.7px;
+    margin-bottom: 10px;
+  }
+  .on-start .start-heading h1 {
+    font-size: 27px;
+    letter-spacing: -0.8px;
+    line-height: 1.6;
+  }
+  .on-start .start-heading > p {
+    font-size: 12px;
+    line-height: 1.8;
+    max-width: 285px;
+    margin: 7px auto 0;
+  }
+  .on-start .start-composer {
+    border-radius: 13px;
+    padding: 13px 14px 14px;
+    box-shadow: 0 8px 25px #274e7e06;
+  }
+  .on-start .start-composer-top {
+    gap: 8px;
+  }
+  .on-start .start-demo-label {
+    display: none;
+  }
+  .on-start .start-modes {
+    padding: 3px;
+    gap: 2px;
+    width: 100%;
+  }
+  .on-start .start-modes button {
+    font-size: 12px;
+    min-height: 37px;
+    padding: 8px 12px;
+    flex: 1;
+    gap: 6px;
+  }
+  .on-start .start-modes button:first-child {
+    flex: 1.25;
+  }
+  .on-start .start-modes svg {
+    width: 14px;
+    height: 14px;
+  }
+  .on-start .start-prompt {
+    font-size: 13px;
+    min-height: 115px;
+    margin-top: 9px;
+    padding: 12px 1px;
+    line-height: 1.9;
+  }
+  .on-start .start-suggestions {
+    gap: 7px;
+    margin: 8px 0 14px;
+  }
+  .on-start .start-suggestions button {
+    font-size: 10px;
+    padding: 7px 9px;
+    min-height: 32px;
+    gap: 6px;
+    flex: 1 1 calc(50% - 5px);
+  }
+  .on-start .start-suggestions button:last-child {
+    flex: 1 1 100%;
+    justify-content: flex-start;
+    gap: 12px;
+  }
+  .on-start .start-suggestions svg {
+    width: 11px;
+    height: 11px;
+  }
+  .on-start .start-composer-actions {
+    padding-top: 12px;
+    gap: 12px;
+  }
+  .on-start .start-composer-actions > div {
+    gap: 0;
+    display: block;
+  }
+  .on-start .start-attach-button {
+    font-size: 12px;
+    min-height: 40px;
+    padding: 7px 1px;
+    gap: 6px;
+  }
+  .on-start .start-attach-button svg {
+    width: 15px;
+    height: 15px;
+  }
+  .on-start .start-composer-actions > div > span {
+    display: none;
+  }
+  .on-start .start-submit {
+    font-size: 12px;
+    min-width: 128px;
+    min-height: 42px;
+    padding: 9px 14px;
+    gap: 11px;
+  }
+  .on-start .start-helper {
+    display: block;
+    font-size: 9px;
+    line-height: 1.9;
+    text-align: center;
+    max-width: 335px;
+    margin: 11px auto 0;
+  }
+  .on-start .start-helper .text-link {
+    display: flex;
+    justify-content: center;
+    font-size: 10px;
+    margin: 3px auto 0;
+    min-height: 29px;
+  }
+  .on-start .start-attachments {
+    gap: 7px;
+    margin: 3px 0 11px;
+  }
+  .on-start .start-attachment {
+    max-width: 100%;
+    width: 100%;
+    padding: 7px 8px;
+  }
+  .on-start .start-attachment > div {
+    flex: 1;
+  }
+  .on-start .start-attachment b {
+    font-size: 11px;
+    max-width: 225px;
+  }
+  .on-start .start-attachment small {
+    font-size: 10px;
+  }
+  .on-start .start-attachment > img,
+  .on-start .start-file-icon {
+    height: 41px;
+    width: 36px;
+  }
+  .on-start .start-attachment .icon-button {
+    width: 30px;
+    height: 36px;
+  }
+  .on-start .start-tools {
+    padding-top: 20px;
+    margin-top: 0;
+  }
+  .on-start .start-continue {
+    padding-bottom: 16px;
+    margin-bottom: 20px;
+  }
+  .on-start .start-tools .section-heading,
+  .on-start .start-continue .section-heading,
+  .on-start .start-cases .section-heading {
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+  .on-start .start-tools .section-heading > div,
+  .on-start .start-continue .section-heading > div,
+  .on-start .start-cases .section-heading > div {
+    display: block;
+  }
+  .on-start .start-tools .section-heading h2,
+  .on-start .start-continue .section-heading h2,
+  .on-start .start-cases .section-heading h2 {
+    font-size: 17px;
+  }
+  .on-start .start-tools .section-heading p,
+  .on-start .start-continue .section-heading p,
+  .on-start .start-cases .section-heading p {
+    font-size: 11px;
+    line-height: 1.8;
+    margin-top: 4px;
+  }
+  .on-start .start-tools .section-heading > .text-link,
+  .on-start .start-continue .section-heading > .text-link {
+    font-size: 10px;
+    white-space: nowrap;
+  }
+  .on-start .start-tool-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .on-start .start-tool {
+    padding: 12px 13px;
+    gap: 14px;
+  }
+  .on-start .start-tool > img {
+    width: 72px;
+    height: 88px;
+  }
+  .on-start .start-tool h3 {
+    font-size: 15px;
+  }
+  .on-start .start-tool p {
+    font-size: 11px;
+    min-height: 0;
+    margin-top: 4px;
+    line-height: 1.9;
+  }
+  .on-start .start-tool > div > div {
+    gap: 17px;
+    margin-top: 6px;
+  }
+  .on-start .start-tool .text-link {
+    font-size: 11px;
+    min-height: 30px;
+  }
+  .on-start .start-cases {
+    margin-top: 25px;
+  }
+  .on-start .start-cases .example-grid {
+    grid-template-columns: 1fr;
+  }
+  .on-start .start-cases .example-card .scene-art {
+    aspect-ratio: 1.7;
+  }
+  .on-start .start-continue .continue-grid {
+    grid-template-columns: 1fr;
+  }
+  .start-match .suggested-scene em {
+    font-size: 10px;
+  }
+  .start-match .suggested-scene small {
+    font-size: 11px;
+  }
+  .start-match .suggested-scene b {
+    font-size: 13px;
+  }
+}
