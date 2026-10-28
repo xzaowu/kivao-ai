@@ -14,13 +14,36 @@ import { demo, useDemo } from '../demo/store';
 import { SceneChoices } from '../components/SceneCards';
 import { useStartCreation } from '../components/useStartCreation';
 import { Icon } from '../components/Icon';
-import { errorMessage, useUi } from '../components/ui-context';
+import { errorMessage, UiContext, useUi } from '../components/ui-context';
 import { NotFoundPage } from '../pages/StaticPages';
 import { Inputs } from './Inputs';
 import { Plan, Running } from './Plan';
 import { Results } from './Results';
 
-export function Workspace({ sessionId }: { sessionId: string }) {
+export function Workspace({
+  sessionId,
+  embedded = false,
+}: {
+  sessionId: string;
+  embedded?: boolean;
+}) {
+  const ui = useUi();
+  return embedded ? (
+    <UiContext.Provider value={{ ...ui, open: ui.openLayer }}>
+      <WorkspaceBody sessionId={sessionId} embedded />
+    </UiContext.Provider>
+  ) : (
+    <WorkspaceBody sessionId={sessionId} />
+  );
+}
+
+function WorkspaceBody({
+  sessionId,
+  embedded = false,
+}: {
+  sessionId: string;
+  embedded?: boolean;
+}) {
   const state = useDemo(),
     creation = state.creations.find((item) => item.id === sessionId);
   const [pane, setPane] = useState<'inputs' | 'results'>(
@@ -56,10 +79,11 @@ export function Workspace({ sessionId }: { sessionId: string }) {
       if (mounted.current) {
         setPane('results');
         window.scrollTo({ top: 0, behavior: 'instant' });
-        void navigate({
-          to: '/creations/$creationId',
-          params: { creationId: sessionId },
-        });
+        if (!embedded)
+          void navigate({
+            to: '/creations/$creationId',
+            params: { creationId: sessionId },
+          });
       }
     },
     onError: (error) => {
@@ -103,7 +127,7 @@ export function Workspace({ sessionId }: { sessionId: string }) {
   });
   if (!creation) return <NotFoundPage />;
   const scene = requireScene(creation.sceneId),
-    video = scene.output === '视频',
+    video = scene.output === '视频' || scene.id.startsWith('video-'),
     free = creation.sceneId.startsWith('free-');
   function chooseScene() {
     ui.open(
@@ -118,15 +142,17 @@ export function Workspace({ sessionId }: { sessionId: string }) {
   }
   function switchMode(mode: 'free' | 'scene') {
     if (mode === 'scene') chooseScene();
-    else void navigate({ to: video ? '/videos' : '/images' });
+    else
+      void navigate({
+        to: video ? '/videos/$toolId' : '/images/$toolId',
+        params: { toolId: 'free' },
+      });
   }
   return (
     <>
       <div className="studio-title">
         <div>
-          <h1>
-            {creation.draft ? (video ? '视频创作' : '图片创作') : creation.name}
-          </h1>
+          <h1>{creation.draft ? scene.name : creation.name}</h1>
           <span>
             {creation.draft
               ? '直接开始，或选择一个场景'

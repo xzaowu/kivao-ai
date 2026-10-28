@@ -11,6 +11,7 @@ import {
 import { demo, useDemo } from '../demo/store';
 import { CaseCard } from '../components/SceneCards';
 import { Icon } from '../components/Icon';
+import { ToolGuide } from './ToolGuide';
 import { OutputMedia } from '../components/Media';
 import { useUi } from '../components/ui-context';
 import { AdjustmentDialog, InspectOutput, SaveDialog } from './ReviewDialogs';
@@ -60,6 +61,16 @@ export function Results({
         ),
       ),
   );
+  if (!version)
+    return (
+      <>
+        <div className="studio-result-head">
+          <span>功能示例与操作指南</span>
+          <span className="studio-demo-tag">演示内容</span>
+        </div>
+        <ToolGuide creation={creation} />
+      </>
+    );
   return (
     <>
       <div className="studio-result-head">
@@ -210,9 +221,11 @@ export function Results({
                   />
                   <div className="result-meta">
                     <span>
-                      {output.kind === 'video'
-                        ? '12秒 · 16:9'
-                        : version.snapshot.settings.ratio}{' '}
+                      {output.kind === 'text'
+                        ? '预置示例文稿'
+                        : output.kind === 'video'
+                          ? '12秒 · 16:9'
+                          : version.snapshot.settings.ratio}{' '}
                       · 演示
                     </span>
                     <button

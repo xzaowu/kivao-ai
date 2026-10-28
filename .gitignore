@@ -10,3 +10,4 @@ coverage/
 .impeccable/
 playwright-report/
 test-results/
+*:Zone.Identifier

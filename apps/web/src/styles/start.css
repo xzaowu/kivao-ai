@@ -108,37 +108,6 @@
 .on-start .start-prompt:focus-visible {
   outline: none;
 }
-.on-start .start-suggestions {
-  display: flex;
-  gap: 9px;
-  flex-wrap: wrap;
-  margin: 10px 0 18px;
-}
-.on-start .start-suggestions button {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 11px;
-  border: 1px solid #e5ecf5;
-  border-radius: 7px;
-  background: #f9fbfe;
-  min-height: 34px;
-  padding: 7px 11px;
-  font-size: 11px;
-  color: #738ca5;
-  flex: 1;
-  white-space: nowrap;
-}
-.on-start .start-suggestions button:hover {
-  color: #336bb5;
-  background: #edf4ff;
-  border-color: #d2e3fa;
-}
-.on-start .start-suggestions svg {
-  width: 12px;
-  height: 12px;
-  color: #99b1ca;
-}
 .on-start .start-composer-actions {
   display: flex;
   align-items: center;
@@ -400,11 +369,6 @@
   .on-start .start-tool .text-link {
     font-size: 9px;
   }
-  .on-start .start-suggestions button {
-    font-size: 10px;
-    gap: 7px;
-    padding-inline: 9px;
-  }
   .on-start .start-composer-actions > div > span {
     font-size: 9px;
   }
@@ -471,26 +435,6 @@
     margin-top: 9px;
     padding: 12px 1px;
     line-height: 1.9;
-  }
-  .on-start .start-suggestions {
-    gap: 7px;
-    margin: 8px 0 14px;
-  }
-  .on-start .start-suggestions button {
-    font-size: 10px;
-    padding: 7px 9px;
-    min-height: 32px;
-    gap: 6px;
-    flex: 1 1 calc(50% - 5px);
-  }
-  .on-start .start-suggestions button:last-child {
-    flex: 1 1 100%;
-    justify-content: flex-start;
-    gap: 12px;
-  }
-  .on-start .start-suggestions svg {
-    width: 11px;
-    height: 11px;
   }
   .on-start .start-composer-actions {
     padding-top: 12px;

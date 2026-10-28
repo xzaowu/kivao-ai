@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import data from './catalog.json';
+import features from './features.json';
 import type { Scene } from '@kivao/contracts';
 
 export const AssetKeySchema = z.enum([
@@ -11,6 +12,11 @@ export const AssetKeySchema = z.enum([
   'tryon',
   'kivao-mark',
   'bakery-demo',
+  'beauty-demo',
+  'caption-demo',
+  'fashion-demo',
+  'portrait-demo',
+  'product-demo',
 ]);
 export type AssetKey = z.infer<typeof AssetKeySchema>;
 export const RoleSchema = z.object({
@@ -25,7 +31,7 @@ export const SceneDefinitionSchema = z.object({
   id: z.string(),
   name: z.string(),
   category: z.string(),
-  output: z.enum(['图片', '视频', '图文']),
+  output: z.enum(['图片', '视频', '图文', '文本']),
   input: z.string(),
   image: AssetKeySchema,
   summary: z.string(),
@@ -62,95 +68,25 @@ export const MaterialSchema = z.object({
 export type Material = z.infer<typeof MaterialSchema> & { url?: string };
 export const scenes = SceneDefinitionSchema.array().parse(data.scenes);
 export const categories = data.categories;
-export const demoMaterials = MaterialSchema.array().parse(data.materials);
+export const demoMaterials = MaterialSchema.array().parse(features.materials);
 export const cases = data.cases;
 export const coreSceneIds: Record<string, Scene['id']> = {
   product: 'product-images',
   tryon: 'virtual-try-on',
   video: 'reference-video',
 };
-export const defaults: Record<string, Record<string, string>> = {
-  ...data.defaults,
-  'free-image': { style: '自然摄影', ratio: '3:4', count: '2' },
-  'free-video': {
-    channel: '门店展示',
-    captions: '简洁字幕',
-    ratio: '16:9',
-    count: '1',
-  },
-};
-export const freeScenes = SceneDefinitionSchema.array().parse([
-  {
-    id: 'free-image',
-    name: '自由图片创作',
-    category: '自由创作',
-    output: '图片',
-    input: '一张图片',
-    image: 'serum',
-    summary: '描述你的画面目标，先核对计划再开始。',
-    ready: true,
-    roles: [
-      {
-        id: 'reference',
-        label: '参考图片',
-        required: false,
-        media: 'image',
-        demo: 'serum',
-        help: '可选。用于说明主体、风格或构图。',
-      },
-    ],
-    config: [
-      {
-        key: 'style',
-        label: '画面风格',
-        options: ['自然摄影', '极简产品', '生活方式'],
-      },
-      { key: 'ratio', label: '画面比例', options: ['3:4', '1:1', '16:9'] },
-      {
-        key: 'count',
-        label: '图片数量',
-        options: [
-          ['2', '2 张'],
-          ['4', '4 张'],
-        ],
-      },
-    ],
-    checks: ['主体和画面符合目标', '文字与品牌内容可用', '细节和构图适合使用'],
-    adjustments: ['背景更简洁', '调整构图', '强化主体细节'],
-    out: '2–4 张图片',
-  },
-  {
-    id: 'free-video',
-    name: '自由视频创作',
-    category: '自由创作',
-    output: '视频',
-    input: '一张图片',
-    image: 'bakery',
-    summary: '描述短片主题，核对镜头与输出。',
-    ready: true,
-    roles: [
-      {
-        id: 'subject',
-        label: '主体参考图',
-        required: false,
-        media: 'image',
-        demo: 'bakery',
-        help: '可选。用于说明产品、门店或人物主体。',
-      },
-    ],
-    config: [
-      {
-        key: 'channel',
-        label: '发布用途',
-        options: ['门店展示', '社媒短片', '品牌介绍'],
-      },
-      { key: 'captions', label: '字幕方式', options: ['简洁字幕', '无字幕'] },
-    ],
-    checks: ['镜头与节奏符合目标', '主体和画面内容正确', '字幕与品牌内容可用'],
-    adjustments: ['节奏更利落', '突出主体', '字幕更克制'],
-    out: '1 条 12 秒演示短片',
-  },
-]);
+export const defaults: Record<
+  string,
+  Record<string, string>
+> = features.defaults;
+export const freeScenes = SceneDefinitionSchema.array().parse(
+  Object.values(features.freeScenes).map((scene) => ({
+    summary: '',
+    input: '',
+    ...scene,
+    config: scene.config.filter((field) => field.key !== 'script'),
+  })),
+);
 export function getScene(id: string) {
   return [...scenes, ...freeScenes].find((scene) => scene.id === id);
 }
@@ -160,7 +96,7 @@ export function requireScene(id: string) {
   return scene;
 }
 export function assetUrl(key: AssetKey) {
-  return `/demo/${key}.${key === 'kivao-mark' ? 'png' : key === 'bakery-demo' ? 'mp4' : 'webp'}`;
+  return `/demo/${key}.${key === 'kivao-mark' ? 'png' : key.endsWith('-demo') ? 'mp4' : 'webp'}`;
 }
 export function materialUrl(material: Material | undefined) {
   return (

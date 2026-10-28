@@ -109,7 +109,12 @@ test('home fidelity, guided intentions, dialogs, navigation, theme and credits',
   ).toHaveCount(2);
   await page.keyboard.press('Escape');
   await expect(page.getByRole('dialog')).toHaveCount(0);
-  await page.getByRole('button', { name: '切换深色主题' }).click();
+  await page
+    .getByRole('button', { name: '主题外观', exact: true })
+    .filter({ visible: true })
+    .first()
+    .click();
+  await page.getByRole('button', { name: '深色', exact: true }).click();
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
   const contrasts = await page.evaluate(() => {
     function luminance(color: string) {
@@ -155,8 +160,13 @@ test('home fidelity, guided intentions, dialogs, navigation, theme and credits',
   await screenshot(page, info, 'home-dark');
   await page.reload();
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
-  await page.getByRole('button', { name: '切换浅色主题' }).click();
-  await page.getByRole('button', { name: '演示积分 0' }).click();
+  await page
+    .getByRole('button', { name: '主题外观', exact: true })
+    .filter({ visible: true })
+    .first()
+    .click();
+  await page.getByRole('button', { name: '浅色', exact: true }).click();
+  await page.getByRole('button', { name: /1,200.*演示积分/ }).click();
   await expect(page.getByRole('dialog')).toContainText('不是账户余额');
   await page.keyboard.press('Escape');
   for (const [path, title] of [
@@ -320,7 +330,7 @@ for (const [sceneId, title, count] of [
     ).toHaveAttribute('aria-pressed', 'true');
     expect((await state(page)).works).toEqual(beforeReload);
     await page.goto('/works');
-    await expect(page.locator('.work-card')).toHaveCount(
+    await expect(page.locator('.ls-work-card')).toHaveCount(
       Math.min(2, count) * 2,
     );
     await screenshot(page, info, `${sceneId}-works`);
@@ -397,7 +407,7 @@ test('free image and video goals, empty validation, frontend plans and playable 
     ['/images', '自然光下的商品主视觉'],
     ['/videos', '温暖的面包房短片'],
   ]) {
-    await page.goto(path!);
+    await page.goto(path! + '/free');
     await page.getByRole('button', { name: '预览生成计划' }).click();
     await expect(page.locator('#studio-validation')).toContainText('描述目标');
     await page.goto('/');
@@ -437,7 +447,7 @@ test('free image and video goals, empty validation, frontend plans and playable 
     await save(page);
   }
   await page.goto('/works');
-  await expect(page.locator('.work-card')).toHaveCount(3);
+  await expect(page.locator('.ls-work-card')).toHaveCount(3);
 });
 
 test('cancellation and API failure keep progress and inputs honest', async ({
@@ -482,34 +492,24 @@ test('cancellation and API failure keep progress and inputs honest', async ({
   expect((await state(page)).creations[0]!.versions).toHaveLength(1);
 });
 
-test('canvas scope, material filters and empty works', async ({ page }) => {
+test('canvas templates, material sources and empty works', async ({ page }) => {
   await page.goto('/works');
   await expect(
-    page.getByRole('heading', { name: '第一件作品，等你来确认' }),
+    page.getByRole('heading', { name: '还没有确认保留的作品' }),
   ).toBeVisible();
   await page.goto('/canvas');
-  await expect(page.locator('.canvas-node')).toHaveCount(2);
-  await page.getByRole('button', { name: '添加演示素材' }).click();
-  await expect(page.locator('.canvas-node')).toHaveCount(3);
-  await page.getByRole('button', { name: '放大画布' }).click();
-  await expect(page.locator('.canvas-toolbar')).toContainText('85%');
+  await expect(page.locator('.cv-template-card')).toHaveCount(8);
   await noOverflow(page);
-  await page.locator('.canvas-node').first().click();
-  await expect(page.getByRole('dialog')).toBeVisible();
-  await page.keyboard.press('Escape');
-  await expect(page.getByText(/AI 节点尚未实现/)).toBeVisible();
-  await page.getByRole('button', { name: '切换深色主题' }).click();
-  await expect(page.locator('.canvas-note')).toHaveCSS(
-    'background-color',
-    'rgb(49, 49, 40)',
-  );
-  await expect(page.locator('.canvas-note h2')).toHaveCSS(
-    'color',
-    'rgb(242, 226, 188)',
-  );
+  await page.getByRole('searchbox', { name: '搜索画布模板' }).fill('换装');
+  await expect(page.locator('.cv-template-card')).toHaveCount(1);
+  await page.locator('.cv-template-card').click();
+  await page.getByRole('button', { name: '使用这个模板' }).click();
+  await expect(page.locator('.cv-stage .cv-node')).toHaveCount(6);
+  await noOverflow(page);
   await page.goto('/materials');
+  await page.getByRole('button', { name: '演示素材', exact: true }).click();
   await page.getByRole('button', { name: '视频', exact: true }).click();
-  await expect(page.locator('.material-card')).toHaveCount(1);
+  await expect(page.locator('.ls-material-card')).toHaveCount(4);
 });
 
 test('corrupt local records are never overwritten by a new temporary session', async ({

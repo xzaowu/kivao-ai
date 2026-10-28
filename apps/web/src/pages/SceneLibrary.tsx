@@ -31,9 +31,8 @@ export function SceneLibraryPage() {
   return (
     <>
       <section className="page-heading">
-        <span className="eyebrow">找的是结果，不是模型。</span>
         <h1>场景库</h1>
-        <p>每个场景都说明：准备什么、怎么做、会得到什么。</p>
+        <p>按任务找到合适的流程，先看效果，再准备素材。</p>
       </section>
       <div className="catalog-toolbar">
         <label className="search-field">
@@ -41,7 +40,7 @@ export function SceneLibraryPage() {
           <input
             type="search"
             aria-label="搜索场景"
-            placeholder="搜索任务或结果，如：换装、商品套图、参考视频"
+            placeholder="搜索场景，如商品、换装、视频"
             value={filters.query}
             onChange={(event) => change({ query: event.target.value })}
           />

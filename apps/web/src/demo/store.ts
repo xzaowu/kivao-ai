@@ -46,7 +46,12 @@ export function readPersisted(raw: string | null): DemoState {
 export function serializeState(state: DemoState) {
   return JSON.stringify({
     schema: 2,
-    creations: state.creations.filter((creation) => !creation.draft),
+    creations: state.creations.filter(
+      (creation) =>
+        !creation.draft ||
+        creation.prompt.trim() ||
+        Object.keys(creation.bindings).length,
+    ),
     works: state.works,
     uploads: state.uploads.map((material) => MaterialSchema.parse(material)),
   });
@@ -140,7 +145,14 @@ export const demo = {
       state.creations.filter((item) => !item.draft).length + 1,
       options,
     );
-    commit({ ...state, creations: [...state.creations, creation] });
+    const creations = state.creations.map((item) =>
+      item.sceneId === sceneId &&
+      item.draft &&
+      (item.prompt.trim() || Object.keys(item.bindings).length)
+        ? { ...item, draft: false }
+        : item,
+    );
+    commit({ ...state, creations: [...creations, creation] });
     return creation.id;
   },
   ensureDraft(sceneId: string) {
@@ -205,6 +217,27 @@ export const demo = {
       count = works.length - state.works.length;
     commit({ ...state, works });
     return count;
+  },
+  keepWork(work: import('./model').DemoWork) {
+    if (state.works.some((item) => item.record.id === work.record.id))
+      return false;
+    if (state.works.length >= 1000)
+      throw new Error('本地演示作品数量已达上限。');
+    commit({ ...state, works: [...state.works, structuredClone(work)] });
+    return true;
+  },
+  replaceUpload(id: string, material: Material) {
+    const old = state.uploads.find((item) => item.id === id);
+    if (!old || old.media !== material.media)
+      throw new Error('请选择与原素材相同类型的文件。');
+    commit({
+      ...state,
+      uploads: state.uploads.map((item) =>
+        item.id === id ? { ...material, id, name: old.name } : item,
+      ),
+    });
+    const previousUrl = (old as Material).url;
+    if (previousUrl) URL.revokeObjectURL(previousUrl);
   },
   addUploads(materials: Material[]) {
     if (state.uploads.length + materials.length > 30)

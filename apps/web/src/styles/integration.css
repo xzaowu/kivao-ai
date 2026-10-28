@@ -1,0 +1,173 @@
+/* Adapt the supplied CSS to Tailwind's reset and React component boundaries. */
+.kivao-app svg,
+dialog svg {
+  display: inline-block;
+  vertical-align: middle;
+}
+.rail-person > span:nth-child(2) {
+  flex: 1;
+  min-width: 0;
+}
+.rail-person .icon-button {
+  width: 24px;
+  min-width: 24px;
+  padding: 3px;
+}
+.rail-person small {
+  white-space: nowrap;
+}
+.canvas-task-dialog {
+  width: min(1200px, calc(100vw - 32px));
+  max-width: 1200px;
+}
+.canvas-workspace .studio-shell {
+  min-height: 520px;
+  height: 65dvh;
+}
+.canvas-workspace .studio-title {
+  padding: 12px 20px;
+}
+.canvas-workspace .studio-mobile-tabs {
+  display: none;
+}
+.canvas-workspace .studio-fieldset {
+  padding: 0;
+}
+.cv-node > img,
+.cv-node > video {
+  width: 100%;
+  height: 160px;
+  object-fit: contain;
+  background: #f2f5f9;
+}
+.cv-node-list .cv-node > img {
+  max-height: 220px;
+}
+.cv-stage {
+  touch-action: none;
+}
+.cv-node-list .cv-node {
+  touch-action: auto;
+}
+.cv-mobile-controls {
+  display: none;
+}
+.cv-board-preview {
+  height: 160px;
+  display: grid;
+  place-content: center;
+  background: var(--mist);
+  gap: 12px;
+  color: var(--sky-ink);
+}
+.cv-board-card {
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface, #fff);
+}
+.ls-card-copy > h2 {
+  font-weight: 500;
+}
+.ls-record-card > .ls-record-actions {
+  margin-left: auto;
+}
+.video-text-output {
+  padding: 24px;
+  background: var(--surface, #fff);
+  color: var(--text);
+}
+.video-text-output > span {
+  font-size: 11px;
+}
+.video-text-output pre {
+  white-space: pre-wrap;
+  font: inherit;
+  line-height: 2;
+  margin: 20px 0;
+}
+.output-visual.background {
+  padding: 25px;
+  background: #e3effd;
+}
+.output-visual.cutout {
+  padding: 25px;
+  background-color: #fff;
+  background-image: conic-gradient(
+    #e2e7ed 25%,
+    transparent 0 50%,
+    #e2e7ed 0 75%,
+    transparent 0
+  );
+  background-size: 20px 20px;
+}
+.output-visual.background img,
+.output-visual.cutout img {
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+.ix-leave-confirm {
+  padding: 20px;
+  border-top: 1px solid var(--line);
+  background: var(--sand);
+}
+.ix-leave-confirm button {
+  margin: 10px 10px 0 0;
+}
+@media (max-width: 760px) {
+  .cv-mobile-controls {
+    display: flex;
+    padding: 8px 12px;
+    gap: 14px;
+    min-height: 44px;
+    background: var(--surface, #fff);
+  }
+  .cv-mobile-controls [aria-pressed='true'] {
+    color: var(--sky-ink);
+    font-weight: 600;
+  }
+  .canvas-workspace .studio-shell {
+    height: 64dvh;
+    min-height: 420px;
+  }
+  .canvas-workspace .studio-mobile-tabs {
+    display: flex;
+  }
+  .canvas-task-dialog {
+    max-height: calc(100dvh - 20px);
+    width: calc(100vw - 16px);
+  }
+  .ls-record-card > .ls-record-actions {
+    margin-left: 0;
+  }
+}
+.cv-editor-top > div:nth-child(2) {
+  min-width: 0;
+}
+.cv-editor-top #cv-save-status {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#toast > button {
+  margin-left: 14px;
+  color: #c6e0ff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+@media (max-width: 760px) {
+  .cv-editor-top > .cv-editor-top-actions {
+    flex: none;
+    gap: 4px;
+  }
+  .cv-editor-top-actions > .icon-button {
+    width: 24px;
+    min-width: 24px;
+    padding: 3px;
+  }
+  .cv-editor-top-actions > .ac-credit-chip {
+    min-width: 0;
+    padding: 4px 6px;
+  }
+}

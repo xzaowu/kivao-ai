@@ -5,6 +5,7 @@ import {
   materialUrl,
   type Material,
 } from '../data/catalog';
+import { library, useLibrary } from '../demo/library';
 import { demo, useDemo } from '../demo/store';
 import { importUpload } from '../demo/uploads';
 import { DemoImage } from './Media';
@@ -135,10 +136,20 @@ export function MaterialPicker({
   onSelect: (material: Material) => void;
 }) {
   const state = useDemo(),
-    ui = useUi(),
-    materials = [...demoMaterials, ...state.uploads].filter(
-      (material) => material.media === media,
-    );
+    ui = useUi();
+  useLibrary();
+  const [query, setQuery] = useState(''),
+    [source, setSource] = useState('all');
+  const materials = [...demoMaterials, ...state.uploads].filter(
+    (material) =>
+      material.media === media &&
+      !library.meta('materials', material.id).trashed &&
+      (source === 'all' ||
+        (source === 'mine' ? material.local : !material.local)) &&
+      (library.meta('materials', material.id).name || material.name).includes(
+        query.trim(),
+      ),
+  );
   function select(material: Material) {
     onSelect(material);
     ui.close();
@@ -158,6 +169,28 @@ export function MaterialPicker({
       <span className="small-note">
         文件不上传；只绑定到本次的“{label}”。刷新后需重新选择。
       </span>
+      <div className="ix-picker-toolbar">
+        <label className="search-field">
+          <Icon name="search" />
+          <input
+            type="search"
+            aria-label="搜索素材"
+            placeholder="搜索素材"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+        </label>
+        <select
+          aria-label="素材来源"
+          value={source}
+          onChange={(e) => setSource(e.target.value)}
+        >
+          <option value="all">全部来源</option>
+          <option value="mine">我的导入</option>
+          <option value="demo">演示素材</option>
+        </select>
+      </div>
+      {!materials.length && <p className="empty">没有找到相符素材</p>}
       <div className="picker-grid">
         {materials.map((material) => (
           <button

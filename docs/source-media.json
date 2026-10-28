@@ -1,53 +1,144 @@
 {
-  "sourceArchive": "KIVAO_V2_C_Source_2026-10-26.zip",
-  "sourceArchiveSha256": "252c697baf403d5b287f200151cb88bcbf0096d35412015467b6498144e4b7a3",
-  "provenance": "User supplied prototype archive; ASSETS.md identifies KIVAO brand artwork, AI demonstration images and a locally edited static-image video. No external stock images or private-repository assets were fetched.",
+  "sourcePackage": "KIVAO_V2_Prototype",
+  "sourceReadme": "2026-10-28 repack; supplied locally by user",
+  "runtimeManifestSha256": "a345b90997b5632d61d16bceb24918651042f9249ec1323052328315c22aa64d",
+  "digestAlgorithm": "SHA-256 over sorted relative runtime paths + NUL + file SHA-256 + LF",
+  "supersedesArchiveSha256": "252c697baf403d5b287f200151cb88bcbf0096d35412015467b6498144e4b7a3",
+  "runtimeFiles": [
+    {
+      "path": "account.css",
+      "sha256": "031972b729825d4ff3d40cbe606fe27ea87d116c1fb8abe01ec494ff66cb5016"
+    },
+    {
+      "path": "app.js",
+      "sha256": "b281d14e17d1bf9a2369f32d411e9d3ed0dfdf152b27a2742c247e2e6f10dbb2"
+    },
+    {
+      "path": "canvas.css",
+      "sha256": "a59ad3f4b633b0c22d47f7fcf6338c25a8c587a0f801a82dc35911a6db78b0d6"
+    },
+    {
+      "path": "data.js",
+      "sha256": "a8134eed529056f0f994eed6986f2e5769532af4369ad9ffbb57317c12904b95"
+    },
+    {
+      "path": "images.css",
+      "sha256": "913d0253fdb6cab0dcb9743bc7c32ce0aa028553352fe62490c4da3079ad7d80"
+    },
+    {
+      "path": "index.html",
+      "sha256": "c0b970e3566779c931d682de98da915dbfb86c54a7bab5af975deb304f409732"
+    },
+    {
+      "path": "interaction.css",
+      "sha256": "80602cc85a622a482c744ffc4ddcc5fed7a235f9896af2d14de2ae9b17c74d59"
+    },
+    {
+      "path": "library-pages.css",
+      "sha256": "a233f6f5ab4b695369a26a0518a35dacb86421b90634999d43189fcfc6da4ef5"
+    },
+    {
+      "path": "polish.css",
+      "sha256": "e8b7e8bd96c3a96a8c51386cf4dea60a1da14b8995cf9633540f2cf4803fec91"
+    },
+    {
+      "path": "start.css",
+      "sha256": "472adf8aeb8bb5c5c304a32f42f8290627ab9c5d8f8628c2921337ccf1b9bc3c"
+    },
+    {
+      "path": "studio.css",
+      "sha256": "4863bfb1f09e5c40043690963861d085f9fb4d47fa4d5355bf4f3b51780d8c15"
+    },
+    {
+      "path": "style.css",
+      "sha256": "583d58e82617fb31c2cc74cb4d1ac1460d723d32078f10cd293084cfe6ed3cd6"
+    },
+    {
+      "path": "theme.css",
+      "sha256": "9f72cc51b83958296d35496df05a1a5ebb2ecde4dde1c20efbd349d98d00b25f"
+    },
+    {
+      "path": "videos.css",
+      "sha256": "883885fb9667aa704aa9d6ba052684e0c08f0aa1450543235fd8809488cfc334"
+    }
+  ],
+  "provenance": "User supplied corrected prototype. ASSETS.md identifies KIVAO brand artwork and AI demonstration images. All six MP4s are local static-image demo edits, with caption-demo adding preset captions. No old private repository or external stock asset was fetched. This records provenance, not a project license grant.",
   "files": [
     {
       "path": "apps/web/public/demo/bakery-demo.mp4",
-      "sourcePath": "dist/assets/bakery-demo.mp4",
+      "sourcePath": "assets/bakery-demo.mp4",
       "sha256": "56fa559c517946227b3e1943406309452218dcea1bf5186f6775718e28f4fcb7",
-      "kind": "12-second static-image demo edit"
+      "kind": "12-second silent static-image demo edit"
     },
     {
       "path": "apps/web/public/demo/bakery.webp",
-      "sourcePath": "dist/assets/bakery.webp",
+      "sourcePath": "assets/bakery.webp",
       "sha256": "86437e9017c27f097c4fbf1ddcaca1bce81bad692e3aeb12d3a1282a909a8189",
       "kind": "AI demonstration image documented in supplied ASSETS.md"
     },
     {
+      "path": "apps/web/public/demo/beauty-demo.mp4",
+      "sourcePath": "assets/beauty-demo.mp4",
+      "sha256": "053b74c3ae755e5509bf324b7090b17f94bf912e25d2824acda0e06c98a45205",
+      "kind": "12-second silent static-image demo edit"
+    },
+    {
+      "path": "apps/web/public/demo/caption-demo.mp4",
+      "sourcePath": "assets/caption-demo.mp4",
+      "sha256": "8a42fa92873b60c80dedf28a69fe986062e7a714452cb18c5de027ff3aaf778b",
+      "kind": "12-second silent static-image demo edit"
+    },
+    {
+      "path": "apps/web/public/demo/fashion-demo.mp4",
+      "sourcePath": "assets/fashion-demo.mp4",
+      "sha256": "2bbf52b4ea69af9d48c7b1ee3d30737e7e379a37a488ab93babe5d0c8cc8d6bb",
+      "kind": "12-second silent static-image demo edit"
+    },
+    {
       "path": "apps/web/public/demo/garment.webp",
-      "sourcePath": "dist/assets/garment.webp",
+      "sourcePath": "assets/garment.webp",
       "sha256": "097f2cdae74fbb3b8a0bd704cab0141308d1bde28f42f15b488bab67c6789bcc",
       "kind": "AI demonstration image documented in supplied ASSETS.md"
     },
     {
       "path": "apps/web/public/demo/kivao-mark.png",
-      "sourcePath": "dist/assets/kivao-mark.png",
+      "sourcePath": "assets/kivao-mark.png",
       "sha256": "c6876003777d011869a6de21a34cab2aed821b43df867f619d37ae006ea3bd92",
-      "kind": "provided KIVAO brand"
+      "kind": "supplied KIVAO brand"
     },
     {
       "path": "apps/web/public/demo/model.webp",
-      "sourcePath": "dist/assets/model.webp",
+      "sourcePath": "assets/model.webp",
       "sha256": "6fa872ac2ab8fff5b416ad2e5b94c78e8bda6dc7f3c4c1ecd00e4d8dec8b148a",
       "kind": "AI demonstration image documented in supplied ASSETS.md"
     },
     {
+      "path": "apps/web/public/demo/portrait-demo.mp4",
+      "sourcePath": "assets/portrait-demo.mp4",
+      "sha256": "f2e41a96de30c877ce2433e3c5a404049123bae476750a27e140e54225b30b6f",
+      "kind": "12-second silent static-image demo edit"
+    },
+    {
+      "path": "apps/web/public/demo/product-demo.mp4",
+      "sourcePath": "assets/product-demo.mp4",
+      "sha256": "98cb588e7737a360b5466d46b89c69066184d49b366063f8554f028a85f02a9f",
+      "kind": "12-second silent static-image demo edit"
+    },
+    {
       "path": "apps/web/public/demo/serum.webp",
-      "sourcePath": "dist/assets/serum.webp",
+      "sourcePath": "assets/serum.webp",
       "sha256": "8cc9342e1e69a64b022795d5104eb96ce51ded2d12ca83cad901b5aaa0aa877f",
       "kind": "AI demonstration image documented in supplied ASSETS.md"
     },
     {
       "path": "apps/web/public/demo/tea.webp",
-      "sourcePath": "dist/assets/tea.webp",
+      "sourcePath": "assets/tea.webp",
       "sha256": "39f1e52165bd35449560cc20f4e28b3214fdfef53ad3b0285061316b86b18d4e",
       "kind": "AI demonstration image documented in supplied ASSETS.md"
     },
     {
       "path": "apps/web/public/demo/tryon.webp",
-      "sourcePath": "dist/assets/tryon.webp",
+      "sourcePath": "assets/tryon.webp",
       "sha256": "7db723eee1dbb6382287c01cbe8c2db2b04d97826478e314cad44cebf8af3c8b",
       "kind": "AI demonstration image documented in supplied ASSETS.md"
     }

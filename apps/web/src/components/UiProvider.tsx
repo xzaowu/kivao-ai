@@ -21,12 +21,35 @@ function Dialog({
   className: string;
   close: () => void;
 }) {
+  const [leaving, setLeaving] = useState(false);
+  const baseline = useRef('');
+  function formSnapshot() {
+    return JSON.stringify(
+      Array.from(
+        ref.current?.querySelectorAll<HTMLInputElement>(
+          'input:not([type=search]),textarea,select',
+        ) || [],
+      ).map((el) => [el.type === 'checkbox' ? el.checked : el.value]),
+    );
+  }
+  function requestClose() {
+    if (ref.current?.querySelector('.canvas-workspace')) {
+      close();
+      return;
+    }
+    if (baseline.current !== formSnapshot()) {
+      setLeaving(true);
+      return;
+    }
+    close();
+  }
   const ref = useRef<HTMLDialogElement>(null),
     titleId = useId();
   useEffect(() => {
     const previous = document.activeElement,
       dialog = ref.current;
     dialog?.showModal();
+    baseline.current = formSnapshot();
     return () => {
       dialog?.close();
       if (previous instanceof HTMLElement && previous.isConnected)
@@ -40,7 +63,7 @@ function Dialog({
       aria-labelledby={titleId}
       onCancel={(event) => {
         event.preventDefault();
-        close();
+        requestClose();
       }}
       onClick={(event) => {
         if (event.target !== event.currentTarget) return;
@@ -51,7 +74,7 @@ function Dialog({
           event.clientY < rect.top ||
           event.clientY > rect.bottom
         )
-          close();
+          requestClose();
       }}
     >
       <header className="dialog-header">
@@ -59,29 +82,63 @@ function Dialog({
           <span className="eyebrow">风筝 KIVAO · 流程演示</span>
           <h2 id={titleId}>{title}</h2>
         </div>
-        <button className="icon-button" onClick={close} aria-label="关闭弹窗">
+        <button
+          className="icon-button"
+          onClick={requestClose}
+          aria-label="关闭弹窗"
+        >
           <Icon name="close" />
         </button>
       </header>
       {children}
+      {leaving && (
+        <section className="ix-leave-confirm" role="alert">
+          <p>还有未保存的输入，离开会丢失本次编辑。</p>
+          <button className="secondary" onClick={() => setLeaving(false)}>
+            继续编辑
+          </button>
+          <button className="primary" onClick={close}>
+            放弃编辑并关闭
+          </button>
+        </section>
+      )}
     </dialog>
   );
 }
 export function UiProvider({ children }: { children: ReactNode }) {
-  const [modal, setModal] = useState<{
-    title: string;
-    body: ReactNode;
-    className: string;
-  } | null>(null);
-  const [toast, setToast] = useState({ text: '', id: 0 });
-  const close = useCallback(() => setModal(null), []);
+  const [modals, setModals] = useState<
+    { id: string; title: string; body: ReactNode; className: string }[]
+  >([]);
+  const [toast, setToast] = useState<{
+    text: string;
+    id: number;
+    action?: { label: string; run: () => void };
+  }>({ text: '', id: 0 });
+  const close = useCallback(() => setModals((items) => items.slice(0, -1)), []);
+  const dismiss = useCallback(() => setModals([]), []);
   const open = useCallback(
     (title: string, body: ReactNode, className = '') =>
-      setModal({ title, body, className }),
+      setModals((items) => [
+        ...items.slice(0, -1),
+        { id: crypto.randomUUID(), title, body, className },
+      ]),
+    [],
+  );
+  const openLayer = useCallback(
+    (title: string, body: ReactNode, className = '') =>
+      setModals((items) => [
+        ...items,
+        { id: crypto.randomUUID(), title, body, className },
+      ]),
     [],
   );
   const notify = useCallback(
-    (text: string) => setToast((previous) => ({ text, id: previous.id + 1 })),
+    (text: string, action?: { label: string; run: () => void }) =>
+      setToast((previous) => ({
+        text,
+        id: previous.id + 1,
+        ...(action ? { action } : {}),
+      })),
     [],
   );
   useEffect(() => {
@@ -97,25 +154,35 @@ export function UiProvider({ children }: { children: ReactNode }) {
     return () => clearInterval(timer);
   }, []);
   return (
-    <UiContext.Provider value={{ open, close, notify }}>
+    <UiContext.Provider value={{ open, openLayer, dismiss, close, notify }}>
       {children}
-      {modal && (
+      {modals.map((modal) => (
         <Dialog
-          key={modal.title}
+          key={modal.id}
           title={modal.title}
           className={modal.className}
           close={close}
         >
           {modal.body}
         </Dialog>
-      )}
+      ))}
       <div
         id="toast"
         role="status"
         aria-live="polite"
         className={toast.text ? 'show' : ''}
       >
-        {toast.text}
+        <span>{toast.text}</span>
+        {toast.action && (
+          <button
+            onClick={() => {
+              toast.action?.run();
+              setToast((previous) => ({ text: '', id: previous.id + 1 }));
+            }}
+          >
+            {toast.action.label}
+          </button>
+        )}
       </div>
     </UiContext.Provider>
   );

@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import { downloadOutput } from '../demo/download';
 import { Button } from '@kivao/ui';
-import { assetUrl, requireScene } from '../data/catalog';
+import { requireScene } from '../data/catalog';
 import {
   currentVersion,
   type Adjustment,
@@ -131,14 +132,10 @@ export function InspectOutput({
       <p className="small-note">
         预制演示媒体，不代表本次真实生成或修改。下载的是演示原素材，不是排版截图。
       </p>
-      <a
-        className="secondary"
-        href={assetUrl(output.asset)}
-        download={`KIVAO_demo_${output.id}.${output.kind === 'video' ? 'mp4' : 'webp'}`}
-      >
+      <button className="secondary" onClick={() => downloadOutput(output)}>
         <Icon name="download" />
         下载演示素材
-      </a>
+      </button>
     </div>
   );
 }

@@ -1,0 +1,684 @@
+/* Resolved theme is set before first paint. Artwork is never filtered. */
+html {
+  color-scheme: light;
+}
+html[data-theme='dark'] {
+  color-scheme: dark;
+  --ink: #e7eef8;
+  --text: #c4d1e1;
+  --muted: #a2b2c5;
+  --sky: #659cff;
+  --sky-ink: #a6c7ff;
+  --mist: #1b304c;
+  --sand: #0e1826;
+  --line: #2b3c51;
+  --surface: #152235;
+  --raised: #1b2b40;
+  --soft: #122035;
+}
+html[data-theme='dark'] body {
+  background: var(--sand);
+  color: var(--ink);
+}
+html[data-theme='dark'] :is(.app-shell, .rail, dialog) * {
+  border-color: var(--line);
+}
+html[data-theme='dark']
+  :is(
+    .rail,
+    .topbar,
+    .mobile-nav,
+    .creation-nav,
+    .start-composer,
+    .start-tool,
+    .scene-card,
+    .example-card,
+    .creation-card,
+    .home-task,
+    .home-quick-start,
+    .image-tool-card,
+    .image-template-card,
+    .video-tool-card,
+    .video-case-card,
+    .video-utilities,
+    .cv-hub-tabs,
+    .cv-template-card,
+    .cv-board-card,
+    .cv-assistant,
+    .cv-node,
+    .cv-toolbar,
+    .cv-zoom,
+    .studio-inputs,
+    .studio-area,
+    .studio-result-head,
+    .studio-review-actions,
+    .studio-confirm-actions,
+    .studio-plan-summary,
+    .studio-mobile-tabs,
+    .ls-record-card,
+    .ls-failure,
+    .ac-panel,
+    .ac-stats > a,
+    .ac-notice,
+    .ac-table-wrap,
+    .ac-checkout-bar
+  ) {
+  background: var(--surface);
+  border-color: var(--line);
+  box-shadow: none;
+}
+html[data-theme='dark']
+  :is(
+    .on-start,
+    .on-images,
+    .on-videos,
+    .on-canvas,
+    .on-canvas.canvas-editing,
+    .cv-editor-top,
+    .cv-node-list,
+    .cv-stage-wrap,
+    .cv-stage,
+    .studio-fields,
+    .studio-content,
+    .studio-review-body,
+    .studio-save-body
+  ) {
+  background: var(--sand);
+}
+html[data-theme='dark']
+  :is(
+    .secondary,
+    .search-field,
+    .image-search,
+    .image-template-filters button,
+    .category-row button,
+    .cv-categories button,
+    .cv-create-tile,
+    .cv-create-tile > span,
+    .cv-boards-toolbar button[aria-pressed='true'],
+    .cv-quick-task,
+    .studio-scene-choice,
+    .studio-role,
+    .studio-mode,
+    .studio-more,
+    .studio-binding,
+    .studio-fixed-spec,
+    .studio-plan-goal,
+    .start-modes,
+    .ls-batchbar,
+    .ls-file-unavailable,
+    .ls-select,
+    .ls-card-favorite,
+    .ls-empty > span,
+    .ac-theme-card,
+    .ac-notice-symbol,
+    .ac-empty > span,
+    .ac-plan,
+    .ac-payment-methods > button,
+    .ac-ledger-icon
+  ) {
+  background: var(--raised);
+  color: var(--text);
+  border-color: var(--line);
+}
+html[data-theme='dark']
+  :is(input:not([type='checkbox']):not([type='radio']), textarea, select) {
+  background: var(--soft);
+  color: var(--ink);
+  border-color: var(--line);
+}
+html[data-theme='dark'] input::placeholder,
+html[data-theme='dark'] textarea::placeholder {
+  color: #8c9fb6;
+  opacity: 1;
+}
+html[data-theme='dark']
+  :is(
+    .start-prompt,
+    .start-prompt textarea,
+    .cv-assistant-compose textarea,
+    .studio-prompt textarea
+  ) {
+  background: transparent;
+}
+html[data-theme='dark']
+  :is(
+    .rail-link,
+    .rail-scene-link,
+    .rail-person,
+    .icon-button,
+    .text-link,
+    .header-navigation a,
+    .header-navigation button,
+    .ac-topup-link,
+    .ls-filter-chips button,
+    .ac-notice-toolbar button,
+    .cv-hub-tabs > button,
+    .cv-toolbar button,
+    .cv-zoom button,
+    .image-feature-nav button,
+    .video-feature-nav button,
+    .video-utility-nav button
+  ) {
+  color: #a1b5ce;
+}
+html[data-theme='dark']
+  :is(
+    .rail-link.active,
+    .rail-link:hover,
+    .icon-button:hover,
+    .start-modes button.active,
+    .studio-mode button.active,
+    .cv-toolbar button.active,
+    .cv-categories button[aria-pressed='true'],
+    .image-template-filters button[aria-pressed='true'],
+    .ac-theme-card[aria-pressed='true'],
+    .ac-payment-methods > button[aria-pressed='true']
+  ) {
+  background: #233c5f;
+  color: #b6d2ff;
+  border-color: #4b75aa;
+}
+html[data-theme='dark'] :is(.primary, .start-submit) {
+  color: white;
+  background: #3b82f6;
+}
+html[data-theme='dark'] .primary:hover:not(:disabled) {
+  background: #4b8ff8;
+}
+html[data-theme='dark']
+  :is(
+    .ink-button,
+    .cv-hub-tabs button[aria-pressed='true'],
+    .ac-notice-toolbar button[aria-pressed='true'],
+    .ls-filter-chips button[aria-pressed='true']
+  ) {
+  background: #304f73;
+  color: #f2f7ff;
+}
+html[data-theme='dark']
+  :is(
+    .header-navigation a.active,
+    .header-navigation a[aria-current='page'],
+    .header-navigation button[aria-pressed='true']
+  ) {
+  color: #edf4ff;
+}
+html[data-theme='dark']
+  :is(
+    h1,
+    h2,
+    h3,
+    .card-title,
+    .ls-card-copy,
+    .ls-record-title,
+    .ac-profile-card h2,
+    .ac-theme-card b,
+    .ac-plan-name,
+    .ac-plan > strong,
+    .ac-checkout-bar strong,
+    .ac-shortcut-list b,
+    .ac-ledger-list h3,
+    .ac-notice-title,
+    .ac-order-detail dd,
+    .cv-plan-dialog li > b,
+    .cv-plan-inputs b,
+    .cv-template-detail dd,
+    .studio-role-label,
+    .config-field > span
+  ) {
+  color: var(--ink);
+}
+html[data-theme='dark']
+  :is(
+    .eyebrow,
+    .small-note,
+    .media-note,
+    .small-label,
+    .quiet-label,
+    .page-heading p,
+    .section-heading > p,
+    .start-heading p,
+    .start-helper,
+    .start-demo-label,
+    .start-hero .eyebrow,
+    .start-continue .section-heading > span,
+    .image-heading p,
+    .image-section-head p,
+    .image-tool-io,
+    .image-template-copy p,
+    .video-heading p,
+    .video-case-copy p,
+    .video-workspace-guide p,
+    .image-workspace-guide p,
+    .ls-page-heading p,
+    .ls-results-meta,
+    .ls-results-meta > span:first-child,
+    .ls-card-copy > p,
+    .ls-record-title > span,
+    .ls-record-title p,
+    .ls-empty p,
+    .ls-detail-copy > p,
+    .ls-detail-copy dt,
+    .ls-detail-copy > small,
+    .ls-form > p,
+    .ls-page-note,
+    .ls-library-notice,
+    .cv-hub-top p,
+    .cv-gallery-note,
+    .cv-template-copy small,
+    .cv-template-copy > span,
+    .cv-boards-toolbar > span,
+    .cv-board-card p,
+    .cv-empty-stage p,
+    .cv-empty-stage > span,
+    .cv-assistant-scroll > p,
+    .cv-assistant-tip,
+    .cv-quick-task small,
+    .cv-node-meta,
+    .cv-result-caption,
+    .cv-node-placeholder,
+    .cv-node-missing,
+    .cv-plan-goal,
+    .cv-plan-choice small,
+    .cv-plan-dialog li,
+    .cv-plan-dialog li > span,
+    .cv-plan-inputs > span,
+    .cv-review-dialog > p:first-child,
+    .cv-review-checks label,
+    .cv-inspect-body > p,
+    .cv-record-link small,
+    .cv-stage-hint,
+    .cv-task-body small,
+    .cv-note-text,
+    .studio-title > p,
+    .studio-empty-state > p,
+    .studio-demo-tag,
+    .studio-version-note,
+    .studio-fixed-spec,
+    .studio-carried-goal,
+    .studio-plan-list,
+    .studio-review-hints,
+    .studio-role-label small,
+    .result-meta,
+    .ac-page-heading p,
+    .ac-section-head > span,
+    .ac-profile-card p,
+    .ac-profile-caption,
+    .ac-kicker,
+    .ac-stats > a > span,
+    .ac-shortcut-list small,
+    .ac-theme-card small,
+    .ac-help-links > button,
+    .ac-help-links > a,
+    .ac-settings-panel > p,
+    .ac-preference-list small,
+    .ac-dialog-body > p,
+    .ac-notice p,
+    .ac-notice small,
+    .ac-list-meta,
+    .ac-list-meta > span:last-child,
+    .ac-plan p,
+    .ac-plan-price > small,
+    .ac-plan strong small,
+    .ac-checkout-bar > div > span,
+    .ac-wallet-faq p,
+    .ac-table th,
+    .ac-table td small,
+    .ac-ledger-list small,
+    .ac-checkout-dialog dt,
+    .ac-order-detail dt,
+    .ac-form-caption,
+    .ac-notice-category,
+    .ac-empty p,
+    .ac-form-label,
+    .ac-notice-detail > small
+  ) {
+  color: #a2b4ca;
+}
+html[data-theme='dark']
+  :is(
+    .badge,
+    .status,
+    .demo-label,
+    .creation-nav a span,
+    .ls-header-nav > button > span,
+    .ac-demo-badge,
+    .ac-credit-chip
+  ) {
+  background: #203650;
+  color: #a9c9ef;
+  border-color: #365574;
+}
+html[data-theme='dark']
+  :is(.badge.available, .status.running, .zero-cost, .studio-demo-tag) {
+  background: #203858;
+  color: #b4d1ff;
+}
+html[data-theme='dark'] :is(.status.review, .status.failed, .badge.required) {
+  background: #433226;
+  color: #ffc391;
+}
+html[data-theme='dark'] .status.saved {
+  background: #1c3b35;
+  color: #a8dfc9;
+}
+html[data-theme='dark']
+  :is(
+    .start-composer-actions,
+    .section-heading,
+    .plain-note,
+    .page-footer,
+    .rail-divider,
+    .rail-bottom,
+    .ac-rail-account,
+    .ac-shortcut-list > a,
+    .ac-help-links,
+    .ac-preference-list > label,
+    .ac-notice-toolbar,
+    .ac-list-meta,
+    .ac-dialog-actions,
+    .ac-ledger-list > article,
+    .ac-table th,
+    .ac-table td,
+    .ac-checkout-dialog dl,
+    .ac-order-detail dl,
+    .cv-assistant-head,
+    .cv-assistant-compose,
+    .cv-discovery-bar,
+    .cv-detail-flow,
+    .cv-plan-choice,
+    .cv-plan-dialog li,
+    .cv-review-checks,
+    .cv-record-link,
+    .studio-fields,
+    .studio-result-head,
+    .studio-generate,
+    .studio-review-actions,
+    .studio-confirm-actions,
+    .ls-detail-copy dl,
+    .image-template-section
+  ) {
+  border-color: var(--line);
+}
+html[data-theme='dark']
+  :is(
+    .cv-assistant-compose,
+    .cv-node-handle,
+    .cv-detail-flow,
+    .cv-plan-inputs,
+    .cv-node-task .cv-task-body,
+    .cv-node-placeholder .cv-placeholder-body,
+    .ls-detail-preview,
+    .ac-table th
+  ) {
+  background: #18283c;
+}
+html[data-theme='dark'] .cv-grid {
+  background-color: #101c2b;
+  background-image: radial-gradient(#50637e70 0.8px, transparent 0.8px);
+}
+html[data-theme='dark'] .on-canvas .content.cv-hub-content {
+  background-image: radial-gradient(#50637e70 0.65px, transparent 0.65px);
+}
+html[data-theme='dark'] :is(.cv-node.selected, .studio-role.ready) {
+  border-color: #659cff;
+}
+html[data-theme='dark'] .cv-node-note .cv-note-text {
+  background: #343329;
+  color: #e2d9ae;
+}
+html[data-theme='dark'] .cv-edges path {
+  stroke: #718bad;
+}
+html[data-theme='dark'] :is(.cv-toolbar > i, .cv-zoom > i) {
+  background: var(--line);
+}
+html[data-theme='dark'] dialog {
+  background: var(--surface);
+  color: var(--ink);
+  border-color: var(--line);
+  box-shadow: 0 20px 90px #0007;
+}
+html[data-theme='dark'] dialog::backdrop {
+  background: #030914a6;
+}
+html[data-theme='dark'] :is(.modal-head, .dialog-head) {
+  background: var(--surface);
+  border-color: var(--line);
+  color: var(--ink);
+}
+html[data-theme='dark'] :is(.ac-balance-card, .ac-wallet-overview) {
+  background: #1a304b;
+  border-color: #335476;
+}
+html[data-theme='dark']
+  :is(
+    .ac-balance-card > strong,
+    .ac-wallet-overview > div:first-child > strong,
+    .ac-wallet-side > b,
+    .ac-stats strong,
+    .ac-checkout-points,
+    .ac-plan-price
+  ) {
+  color: #c5dcff;
+}
+html[data-theme='dark']
+  :is(
+    .ac-balance-card > span,
+    .ac-balance-card strong small,
+    .ac-balance-card p,
+    .ac-wallet-overview > div:first-child > span,
+    .ac-wallet-overview p,
+    .ac-wallet-overview strong small,
+    .ac-wallet-side > span,
+    .ac-credit-chip > span,
+    .ac-rail-account .rail-person small
+  ) {
+  color: #aac0db;
+}
+html[data-theme='dark'] :is(.ac-wallet-side, .ac-plan-selection) {
+  border-color: #35516d;
+  color: #a9c8eb;
+}
+html[data-theme='dark'] .ac-plan[aria-pressed='true'] {
+  background: #1f3756;
+  border-color: #659cff;
+  box-shadow: 0 0 0 1px #659cff66;
+}
+html[data-theme='dark'] .ac-plan-tag {
+  background: #284669;
+  color: #c9e0ff;
+}
+html[data-theme='dark'] .ac-notice.unread {
+  background: #192b43;
+  border-color: #39597e;
+}
+html[data-theme='dark'] .ac-preference-list i {
+  background: #445468;
+}
+html[data-theme='dark'] .ac-preference-list input:checked + i {
+  background: #5c8ed3;
+}
+html[data-theme='dark'] .ac-theme-dark > span > svg:first-child {
+  color: #b7c9df;
+}
+html[data-theme='dark'] .ac-theme-card[aria-pressed='true'] b {
+  color: #b6d2ff;
+}
+html[data-theme='dark']
+  :is(.ac-payment-success > span, .ac-ledger-list strong) {
+  background: #1c3b35;
+  color: #a8dfc9;
+}
+html[data-theme='dark'] .ac-payment-success > strong {
+  color: #a8dfc9;
+}
+html[data-theme='dark']
+  .ac-payment-methods
+  > button
+  > svg:last-child:not(:first-child) {
+  background: #233c5f;
+}
+html[data-theme='dark'] .ac-unread-dot {
+  border-color: #152235;
+}
+html[data-theme='dark'] .ac-checkout-dialog dd b {
+  color: #b9d7ff;
+}
+html[data-theme='dark'] .brand-copy {
+  color: #e7eef8;
+}
+html[data-theme='dark'] .brand img {
+  background: #f8fafc;
+  border-radius: 5px;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *:before,
+  *:after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+html[data-theme='dark'] .dialog-header {
+  background: var(--surface);
+  border-color: var(--line);
+}
+html[data-theme='dark'] .rail hr {
+  border-color: var(--line);
+  background: var(--line);
+}
+html[data-theme='dark']
+  :is(.guide-body button, .suggested-scene, .adjust-body fieldset label) {
+  background: var(--raised);
+  border-color: var(--line);
+}
+html[data-theme='dark']
+  :is(
+    .guide-body > p,
+    .picker-body > p,
+    .adjust-body > p,
+    .about-body p,
+    .guide-body small,
+    .guide-body em,
+    .case-layout dl,
+    .case-layout dt,
+    .output-inspect > p
+  ) {
+  color: #a2b4ca;
+}
+html[data-theme='dark'] .on-start .start-modes button[aria-pressed='true'] {
+  background: #294668;
+  color: #c5ddff;
+  box-shadow: none;
+}
+html[data-theme='dark'] .on-start .start-tool .text-link {
+  color: #a5bdd9;
+}
+html[data-theme='dark'] .on-start .start-tool .text-link:first-child {
+  color: #9ec3ff;
+}
+html[data-theme='dark']
+  :is(
+    .on-start .start-tool p,
+    .on-start .start-helper,
+    .on-start .section-heading p
+  ) {
+  color: #a2b4ca;
+}
+html[data-theme='dark'] :is(.rail-scenes, .on-start .start-tools) {
+  border-color: var(--line);
+}
+html[data-theme='dark'] .rail-link.nav-library-start:before {
+  background: var(--line);
+}
+html[data-theme='dark'] .ac-ledger-list strong {
+  background: transparent;
+}
+html[data-theme='dark'] .studio-generate {
+  background: var(--surface);
+}
+html[data-theme='dark']
+  :is(.image-feature-nav, .video-feature-nav)
+  a[aria-current='page'],
+html[data-theme='dark'] .studio-mode button[aria-pressed='true'],
+html[data-theme='dark'] .version-tabs button.active {
+  background: #284567;
+  color: #d2e4ff;
+  border-color: #426a9c;
+  box-shadow: none;
+}
+html[data-theme='dark'] :is(.image-feature-nav, .video-feature-nav) a:hover {
+  background: #1f3551;
+  color: #bdd5f4;
+}
+html[data-theme='dark']
+  :is(
+    .result-select,
+    .studio-generate p,
+    .studio-review-actions > div,
+    .studio-role-label,
+    .studio-plan-list p
+  ) {
+  color: #aec2db;
+}
+html[data-theme='dark'] .result-select > b {
+  background: #243f61;
+  color: #b9d7ff;
+}
+html[data-theme='dark'] .mobile-nav > a {
+  color: #a2b4ca;
+}
+html[data-theme='dark'] .mobile-nav > a.active {
+  color: #bdd6ff;
+}
+html[data-theme='dark'] .mobile-nav > a.active:before {
+  background: #28476a;
+}
+html[data-theme='dark'] :is(.image-tool-card, .video-tool-card) b {
+  color: #aacfff;
+  border-color: var(--line);
+}
+html[data-theme='dark'] :is(.image-tool-card, .video-tool-card) p,
+html[data-theme='dark'] .image-tool-io {
+  color: #a2b4ca;
+}
+html[data-theme='dark'] :is(.image-tool-card, .video-tool-card) h3 > span {
+  background: #29476b;
+  color: #c3dcff;
+}
+html[data-theme='dark']
+  :is(
+    .video-utilities > a,
+    .video-utilities > div:first-child,
+    .cv-node-handle,
+    .cv-node-note .cv-node-handle,
+    .cv-node-task .cv-node-handle
+  ) {
+  border-color: var(--line);
+}
+html[data-theme='dark']
+  :is(.video-utilities small, .video-utilities > div:first-child span) {
+  color: #a2b4ca;
+}
+html[data-theme='dark'] .video-utility-icon {
+  background: #213952;
+  color: #b5cee9;
+}
+html[data-theme='dark'] .cv-node-note .cv-node-handle {
+  background: #35352a;
+}
+html[data-theme='dark'] .cv-node-task .cv-node-handle {
+  background: #203550;
+}
+html[data-theme='dark'] .cv-node-results .cv-node-handle {
+  background: #203a36;
+}
+
+html[data-theme='dark'] .ac-rail-account .rail-person.active > span:last-child {
+  color: #aacfff;
+}

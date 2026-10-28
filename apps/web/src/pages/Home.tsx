@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from '@tanstack/react-router';
 import { Button } from '@kivao/ui';
 import {
+  materialUrl,
   cases,
   recommendScenes,
   requireScene,
@@ -10,7 +11,8 @@ import {
   type Material,
   type SceneDefinition,
 } from '../data/catalog';
-import { useDemo } from '../demo/store';
+import { HOME_DRAFT_KEY, loadHomeDraft } from '../demo/homeDraft';
+import { demo, useDemo } from '../demo/store';
 import { isSaved } from '../demo/model';
 import { CreationCard, CaseCard, SceneChoices } from '../components/SceneCards';
 import { useStartCreation } from '../components/useStartCreation';
@@ -19,20 +21,40 @@ import { Icon } from '../components/Icon';
 import { MaterialPreview, UploadButton } from '../components/MaterialPicker';
 import { useUi } from '../components/ui-context';
 
-const suggestions = [
-  '给新品做一套商品图',
-  '让模特穿上这件衣服',
-  '参考视频制作门店短片',
-];
 const placeholders = {
   guide: '描述你想完成的内容，例如：为新品做一套上架图片，并延展一段宣传短片。',
   image: '描述你想要的画面、主体或风格，也可以先添加参考图片。',
   video: '描述短片的主题、镜头或节奏，也可以添加主体图片或参考视频。',
 };
 export function HomePage() {
-  const [mode, setMode] = useState<'guide' | 'image' | 'video'>('guide'),
-    [prompt, setPrompt] = useState(''),
-    [attachments, setAttachments] = useState<Material[]>([]);
+  const [saved] = useState(loadHomeDraft);
+  const [mode, setMode] = useState(saved.draft.mode),
+    [prompt, setPrompt] = useState(saved.draft.prompt),
+    [attachments, setAttachments] = useState<Material[]>(() =>
+      saved.draft.attachments.flatMap((id) => {
+        const m = demo.materials().find((item) => item.id === id);
+        return m ? [m] : [];
+      }),
+    );
+  const [saveWarning, setSaveWarning] = useState(saved.warning);
+  useEffect(() => {
+    if (saved.warning) return;
+    const timer = setTimeout(() => {
+      try {
+        localStorage.setItem(
+          HOME_DRAFT_KEY,
+          JSON.stringify({
+            mode,
+            prompt,
+            attachments: attachments.map((m) => m.id),
+          }),
+        );
+      } catch {
+        setSaveWarning('首页草稿保存失败，刷新后可能丢失输入。');
+      }
+    }, 150);
+    return () => clearTimeout(timer);
+  }, [mode, prompt, attachments, saved.warning]);
   const state = useDemo(),
     start = useStartCreation(),
     ui = useUi();
@@ -63,6 +85,10 @@ export function HomePage() {
     );
   }
   function begin() {
+    if (attachments.some((m) => !materialUrl(m))) {
+      ui.notify('本地参考需重新选择，请移除或从素材页重新关联后继续。');
+      return;
+    }
     if (mode === 'guide') {
       choose();
       return;
@@ -85,6 +111,11 @@ export function HomePage() {
   }
   return (
     <>
+      {saveWarning && (
+        <p className="app-notice" role="alert">
+          {saveWarning}
+        </p>
+      )}
       <section className="start-hero" aria-label="开始创作">
         <div className="start-heading">
           <span className="eyebrow">风筝 KIVAO · 线始终在人手里。</span>
@@ -159,20 +190,6 @@ export function HomePage() {
               ))}
             </div>
           )}
-          <div className="start-suggestions" aria-label="试试这些想法">
-            {suggestions.map((text) => (
-              <button
-                key={text}
-                onClick={() => {
-                  setPrompt(text);
-                  setMode('guide');
-                  document.getElementById('free-goal')?.focus();
-                }}
-              >
-                {text} <Icon name="arrow" />
-              </button>
-            ))}
-          </div>
           <div className="start-composer-actions">
             <div>
               <UploadButton
@@ -193,6 +210,31 @@ export function HomePage() {
               开始创作 <Icon name="arrow" />
             </Button>
           </div>
+        </div>
+        <div className="ix-home-draft-bar">
+          <span id="ix-home-save" role="status">
+            {saveWarning ||
+              (saved.draft.prompt && saved.draft.prompt === prompt
+                ? '已恢复本地草稿'
+                : '描述和模式会自动保存')}
+          </span>
+          <button
+            onClick={() => {
+              const backup = { prompt, mode, attachments };
+              setPrompt('');
+              setAttachments([]);
+              ui.notify('本次输入已清空', {
+                label: '撤销',
+                run: () => {
+                  setPrompt(backup.prompt);
+                  setMode(backup.mode);
+                  setAttachments(backup.attachments);
+                },
+              });
+            }}
+          >
+            清空本次输入
+          </button>
         </div>
         <p className="start-helper">
           {mode === 'guide'

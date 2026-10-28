@@ -201,6 +201,21 @@ export function Inputs({
             <h2>输出设置</h2>
             <span>{free ? '按需调整' : '已推荐'}</span>
           </div>
+          {creation.sceneId === 'video-avatar' && (
+            <label className="studio-prompt">
+              <span>口播文稿（必填）</span>
+              <textarea
+                maxLength={500}
+                value={creation.settings.script || ''}
+                onChange={(e) =>
+                  demo.edit(creation.id, {
+                    settings: { ...creation.settings, script: e.target.value },
+                  })
+                }
+              />
+              <small>静态样片不会真实口播或合成声音。</small>
+            </label>
+          )}
           <div className="studio-config">
             {scene.config.map((field) => (
               <label key={field.key} className="config-field">

@@ -6,7 +6,8 @@ import {
   lazyRouteComponent,
 } from '@tanstack/react-router';
 import { AppRoot } from './components/AppRoot';
-import { CanvasPage, DesignPage, NotFoundPage } from './pages/StaticPages';
+import { DesignPage, NotFoundPage } from './pages/StaticPages';
+import features from './data/features.json';
 import { demo } from './demo/store';
 
 const rootRoute = createRootRoute({
@@ -22,19 +23,43 @@ const indexRoute = createRoute({
 const imagesRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/images',
-  loader: () => demo.ensureDraft('free-image'),
   component: lazyRouteComponent(
-    () => import('./pages/WorkspacePages'),
+    () => import('./pages/FeaturePages'),
     'ImagesPage',
   ),
 });
 const videosRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/videos',
-  loader: () => demo.ensureDraft('free-video'),
   component: lazyRouteComponent(
-    () => import('./pages/WorkspacePages'),
+    () => import('./pages/FeaturePages'),
     'VideosPage',
+  ),
+});
+const imageToolRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/images/$toolId',
+  loader: ({ params }) => {
+    const tool = features.IMAGE_TOOLS.find((t) => t.id === params.toolId);
+    if (!tool) throw new Error('没有这个图片功能');
+    return demo.ensureDraft(tool.scene);
+  },
+  component: lazyRouteComponent(
+    () => import('./pages/FeaturePages'),
+    'ImageToolPage',
+  ),
+});
+const videoToolRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/videos/$toolId',
+  loader: ({ params }) => {
+    const tool = features.VIDEO_TOOLS.find((t) => t.id === params.toolId);
+    if (!tool) throw new Error('没有这个视频功能');
+    return demo.ensureDraft(tool.scene);
+  },
+  component: lazyRouteComponent(
+    () => import('./pages/FeaturePages'),
+    'VideoToolPage',
   ),
 });
 const scenesRoute = createRoute({
@@ -88,7 +113,18 @@ const materialsRoute = createRoute({
 const canvasRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/canvas',
-  component: CanvasPage,
+  component: lazyRouteComponent(
+    () => import('./canvas/CanvasPages'),
+    'CanvasPage',
+  ),
+});
+const canvasEditorRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/canvas/$boardId',
+  component: lazyRouteComponent(
+    () => import('./canvas/CanvasPages'),
+    'CanvasEditorPage',
+  ),
 });
 const designRoute = createRoute({
   getParentRoute: () => rootRoute,
@@ -106,7 +142,9 @@ export const router = createRouter({
   routeTree: rootRoute.addChildren([
     indexRoute,
     imagesRoute,
+    imageToolRoute,
     videosRoute,
+    videoToolRoute,
     scenesRoute,
     sceneRoute,
     creationsRoute,
@@ -114,6 +152,7 @@ export const router = createRouter({
     worksRoute,
     materialsRoute,
     canvasRoute,
+    canvasEditorRoute,
     designRoute,
     aboutRoute,
   ]),

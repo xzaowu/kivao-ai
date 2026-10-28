@@ -1,117 +1,6 @@
-import { useState, type CSSProperties } from 'react';
 import { Link } from '@tanstack/react-router';
-import { DemoImage } from '../components/Media';
 import { Icon } from '../components/Icon';
-import { useUi } from '../components/ui-context';
-import type { AssetKey } from '../data/catalog';
 
-export function CanvasPage() {
-  const [items, setItems] = useState<AssetKey[]>(['tea', 'tryon']),
-    [zoom, setZoom] = useState(75),
-    ui = useUi();
-  return (
-    <>
-      <section className="page-heading">
-        <span className="eyebrow">CANVAS</span>
-        <h1>画布</h1>
-        <p>把参考素材、创作想法和结果放在一起，梳理下一步。</p>
-      </section>
-      <div className="canvas-toolbar">
-        <div>
-          <strong>山间茶事 · 上新策划</strong>
-          <span className="badge">交互布局演示</span>
-        </div>
-        <div>
-          <button
-            className="secondary"
-            onClick={() => {
-              if (items.length >= 5) ui.notify('演示画布已放入 5 份素材。');
-              else {
-                setItems([...items, 'bakery']);
-                ui.notify('演示素材已添加，可横向浏览画布。');
-              }
-            }}
-          >
-            <Icon name="plus" />
-            添加演示素材
-          </button>
-          <button
-            className="icon-button"
-            aria-label="缩小画布"
-            disabled={zoom <= 45}
-            onClick={() => setZoom(Math.max(45, zoom - 10))}
-          >
-            −
-          </button>
-          <span>{zoom}%</span>
-          <button
-            className="icon-button"
-            aria-label="放大画布"
-            disabled={zoom >= 115}
-            onClick={() => setZoom(Math.min(115, zoom + 10))}
-          >
-            ＋
-          </button>
-        </div>
-      </div>
-      <div className="canvas-viewport">
-        <div
-          className="canvas-board"
-          style={{ '--canvas-zoom': zoom / 100 } as CSSProperties}
-        >
-          <article className="canvas-note">
-            <span>01 / 创作目标</span>
-            <h2>
-              一套图，
-              <br />
-              完整上新。
-            </h2>
-            <p>主视觉 → 场景图 → 细节图 → 品牌海报</p>
-            <Link
-              className="primary"
-              to="/scenes/$sceneId"
-              params={{ sceneId: 'product' }}
-            >
-              进入商品套图 <Icon name="arrow" />
-            </Link>
-          </article>
-          {items.map((asset, index) => (
-            <button
-              className="canvas-node"
-              key={`${asset}-${index}`}
-              style={{ left: 430 + index * 290, top: index % 2 ? 210 : 80 }}
-              onClick={() =>
-                ui.open(
-                  '画布参考 · 演示',
-                  <div className="output-inspect">
-                    <DemoImage asset={asset} />
-                    <p>参考素材仅用于组织想法，可从对应场景开始创作。</p>
-                  </div>,
-                  'output-dialog',
-                )
-              }
-            >
-              <DemoImage asset={asset} />
-              <span>
-                {asset === 'tea'
-                  ? '商品视觉参考'
-                  : asset === 'tryon'
-                    ? '人物搭配参考'
-                    : '门店氛围参考'}{' '}
-                · 演示 <Icon name="search" />
-              </span>
-            </button>
-          ))}
-        </div>
-      </div>
-      <p className="catalog-note">
-        <Icon name="info" />
-        可添加素材、缩放和查看参考；这里验证画布入口与布局，拖拽编辑器、持久化布局和
-        AI 节点尚未实现。
-      </p>
-    </>
-  );
-}
 export function DesignPage() {
   return (
     <>
@@ -170,8 +59,7 @@ export function DesignPage() {
         <h2>场景扩展与画布</h2>
         <p>
           场景库支持 12／24／48
-          样本及分页，仅前三个场景可完整演示。其他样本只能预览结构。画布只支持添加演示素材、缩放与查看，不提供完整编辑器或
-          AI 节点。
+          样本及分页，仅前三个场景由 Mock API 支持。其他场景样本只能预览结构。图片与视频功能页的额外工具使用明确标识的前端演示层。画布支持模板、素材与便签、拖动和平移缩放、角色连接、撤销重做及任务版本审核；仅模拟模板任务，不是自动执行的通用工作流引擎。
         </p>
         <Link className="primary" to="/">
           开始体验 <Icon name="arrow" />

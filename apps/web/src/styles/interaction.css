@@ -1,0 +1,429 @@
+/* Preserve the existing layout; make state and recovery visible. */
+.ix-home-draft-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  max-width: 920px;
+  margin: 9px auto 0;
+  padding: 0 3px;
+  color: #708aa2;
+  font-size: 10px;
+  line-height: 1.8;
+}
+.ix-home-draft-bar button {
+  font-size: 10px;
+  padding: 3px 0;
+  color: #6b88a7;
+  min-height: 28px;
+  white-space: nowrap;
+}
+.on-start .start-helper {
+  margin-top: 4px;
+}
+.studio-title .ix-save-hint {
+  color: #708aa2;
+  font-size: 10px;
+  white-space: nowrap;
+  letter-spacing: 0;
+}
+.ix-file-missing {
+  border-color: #e4b590 !important;
+  background: #fff8f1;
+}
+.ix-file-missing > div small {
+  color: #9b6745;
+}
+.ix-file-missing > .text-link {
+  font-size: 10px;
+  min-height: 32px;
+  margin-left: auto;
+}
+.ix-role-error {
+  border-color: #d58b58 !important;
+  box-shadow: 0 0 0 2px #ffc79f2e;
+}
+.ix-field-error,
+.studio-role .ix-field-error {
+  color: #a95b2c;
+  font-size: 11px;
+  line-height: 1.9;
+  margin: 8px 0;
+}
+.ix-field-error:empty {
+  display: none;
+}
+.studio-role .ix-role-warning {
+  color: #9d704c;
+  font-size: 11px;
+  line-height: 1.9;
+}
+.ix-role-warning + .text-link {
+  font-size: 11px;
+}
+.ix-picker-controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.ix-picker-controls > .secondary {
+  font-size: 12px;
+  min-height: 40px;
+}
+.ix-picker-controls .search-field {
+  flex: 1;
+  min-width: 200px;
+  min-height: 40px;
+}
+.ix-picker-controls input {
+  width: 100%;
+  min-width: 0;
+  font-size: 12px;
+  border: 0;
+  background: transparent;
+  outline-offset: 0;
+}
+.ix-picker-tabs {
+  display: flex;
+  gap: 6px;
+  width: 100%;
+  padding-top: 4px;
+}
+.ix-picker-tabs > button {
+  font-size: 12px;
+  min-height: 36px;
+  padding: 7px 13px;
+  border-radius: 6px;
+  color: #6c849b;
+}
+.ix-picker-tabs > button[aria-pressed='true'] {
+  background: #edf4ff;
+  color: #2e66a8;
+}
+.ix-picker-body > .small-note {
+  display: block;
+  margin-top: 13px;
+  font-size: 10px;
+}
+.ix-picker-meta {
+  font-size: 11px;
+  color: #7890a4;
+  line-height: 1.9;
+  margin: 16px 0 0;
+}
+.ix-picker-body .picker-grid {
+  margin-top: 16px;
+  gap: 20px 18px;
+}
+.ix-picker-body .picker-grid button {
+  border: 1px solid #e3ebf4;
+  padding: 7px;
+  min-width: 0;
+}
+.ix-picker-body .picker-grid img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4/3;
+  object-fit: contain;
+  background: #f1f4f7;
+}
+.ix-picker-body .picker-grid b {
+  font-size: 11px;
+  margin: 8px 2px 0;
+}
+.ix-picker-body .picker-grid span {
+  display: block;
+  font-size: 10px;
+  margin: 4px 2px 1px;
+}
+.ix-picker-empty {
+  padding: 34px 15px;
+  text-align: center;
+}
+.ix-picker-empty h3 {
+  font-size: 17px;
+  font-weight: 500;
+}
+.ix-picker-empty p {
+  font-size: 12px;
+  line-height: 1.9;
+  color: #7c94aa;
+  margin: 9px 0 20px;
+}
+.ix-picker-empty .secondary {
+  font-size: 12px;
+  min-height: 39px;
+}
+.ix-leave-confirm {
+  position: sticky;
+  bottom: 0;
+  z-index: 8;
+  background: #fff8ef;
+  border-top: 1px solid #eccbad;
+  padding: 20px 27px;
+  box-shadow: 0 -10px 25px #0b25400d;
+}
+.ix-leave-confirm > strong {
+  font-size: 15px;
+  font-weight: 500;
+  color: #714e32;
+}
+.ix-leave-confirm > p {
+  font-size: 12px;
+  color: #8c745e;
+  line-height: 1.9;
+  margin: 5px 0 15px;
+}
+.ix-leave-confirm > div {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+.ix-leave-confirm button {
+  font-size: 12px;
+  min-height: 40px;
+  padding: 9px 14px;
+}
+#toast.show:has(button) {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  pointer-events: auto;
+  padding: 10px 12px 10px 18px;
+  text-align: left;
+  max-width: calc(100vw - 32px);
+}
+#toast > span {
+  min-width: 0;
+  line-height: 1.8;
+}
+#toast > button {
+  color: #c2dbff;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  min-height: 36px;
+  padding: 7px 5px;
+  flex: none;
+  text-align: center;
+}
+#toast > button:hover {
+  text-decoration: underline;
+}
+#toast > .ix-toast-dismiss {
+  width: 28px;
+  height: 32px;
+  padding: 6px;
+  min-height: 32px;
+  color: #a3b7cd;
+}
+#toast > .ix-toast-dismiss svg {
+  width: 15px;
+  height: 15px;
+}
+[aria-invalid='true']:is(input, textarea, select) {
+  border-color: #d58b58 !important;
+}
+html[data-theme='dark']
+  :is(
+    .ix-home-draft-bar,
+    .ix-home-draft-bar button,
+    .studio-title .ix-save-hint,
+    .ix-picker-meta,
+    .ix-picker-empty p
+  ) {
+  color: #a7bad0;
+}
+html[data-theme='dark'] .ix-picker-tabs > button {
+  color: #abc0d9;
+}
+html[data-theme='dark'] .ix-picker-tabs > button[aria-pressed='true'] {
+  background: #284567;
+  color: #c5dcff;
+}
+html[data-theme='dark'] .ix-picker-body .picker-grid img {
+  background: #1b2b40;
+}
+html[data-theme='dark'] .ix-leave-confirm {
+  background: #342b23;
+  border-color: #6e5038;
+}
+html[data-theme='dark'] .ix-leave-confirm > strong {
+  color: #f1c69c;
+}
+html[data-theme='dark'] .ix-leave-confirm > p {
+  color: #c7b6a4;
+}
+html[data-theme='dark'] .ix-file-missing {
+  background: #342b23;
+}
+html[data-theme='dark']
+  :is(
+    .ix-field-error,
+    .studio-role .ix-field-error,
+    .studio-role .ix-role-warning,
+    .ix-file-missing > div small
+  ) {
+  color: #edbb95;
+}
+@media (max-width: 760px) {
+  .ix-home-draft-bar {
+    font-size: 9px;
+    margin-top: 9px;
+    padding: 0 1px;
+    gap: 10px;
+  }
+  .ix-home-draft-bar button {
+    font-size: 10px;
+    min-height: 34px;
+  }
+  .studio-title .ix-save-hint {
+    display: block;
+    font-size: 9px;
+    margin: 4px 0 0;
+  }
+  .studio-title > div {
+    flex-wrap: wrap;
+  }
+  .ix-picker-controls {
+    gap: 12px;
+  }
+  .ix-picker-controls > .secondary {
+    width: 100%;
+    min-height: 42px;
+    font-size: 12px;
+  }
+  .ix-picker-controls .search-field {
+    width: 100%;
+    flex: initial;
+    min-height: 42px;
+  }
+  .ix-picker-controls input {
+    font-size: 13px;
+  }
+  .ix-picker-tabs {
+    gap: 5px;
+    padding-top: 0;
+  }
+  .ix-picker-tabs > button {
+    min-height: 40px;
+    font-size: 11px;
+    flex: 1;
+    text-align: center;
+    padding: 8px 10px;
+  }
+  .ix-picker-body > .small-note {
+    font-size: 10px;
+    line-height: 1.9;
+  }
+  .ix-picker-meta {
+    font-size: 10px;
+    margin-top: 15px;
+  }
+  .ix-picker-body .picker-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 10px;
+    margin-top: 14px;
+  }
+  .ix-picker-body .picker-grid button {
+    padding: 6px;
+  }
+  .ix-picker-body .picker-grid b {
+    font-size: 11px;
+    line-height: 1.8;
+  }
+  .ix-picker-body .picker-grid span {
+    font-size: 9px;
+    line-height: 1.8;
+  }
+  .ix-picker-empty {
+    padding: 29px 3px;
+  }
+  .ix-picker-empty h3 {
+    font-size: 16px;
+  }
+  .ix-picker-empty p {
+    font-size: 11px;
+    line-height: 1.9;
+  }
+  .ix-leave-confirm {
+    padding: 18px 20px;
+  }
+  .ix-leave-confirm > strong {
+    font-size: 14px;
+  }
+  .ix-leave-confirm > p {
+    font-size: 11px;
+  }
+  .ix-leave-confirm > div {
+    gap: 9px;
+  }
+  .ix-leave-confirm button {
+    font-size: 12px;
+    min-height: 42px;
+    flex: 1;
+  }
+  .studio-role-actions .secondary,
+  .studio-role-actions .text-link {
+    min-height: 40px;
+  }
+  .studio-binding .text-link {
+    min-height: 36px;
+  }
+  .studio-generate > .primary,
+  .studio-confirm-actions .primary,
+  .studio-review-actions .primary {
+    min-height: 44px;
+  }
+  .ac-header-actions > .ac-notice-link {
+    min-width: 32px !important;
+    height: 36px !important;
+  }
+  .ac-header-actions > .ac-top-avatar {
+    min-width: 32px;
+    height: 32px !important;
+  }
+  .ac-header-actions > .ac-credit-chip {
+    min-height: 32px !important;
+  }
+  .ac-notice-inline-actions button {
+    min-height: 36px !important;
+  }
+  .ac-heading-actions > .secondary {
+    min-height: 38px;
+  }
+  .ac-dialog-body .icon-button {
+    min-width: 36px;
+    min-height: 36px;
+  }
+  #toast.show:has(button) {
+    gap: 9px;
+    font-size: 11px;
+    padding: 9px 10px 9px 13px;
+    bottom: 81px;
+  }
+  #toast > button {
+    font-size: 11px;
+    min-height: 40px;
+    padding: 8px 4px;
+  }
+  #toast > .ix-toast-dismiss {
+    width: 25px;
+    min-height: 32px;
+  }
+  .ix-field-error,
+  .studio-role .ix-field-error {
+    font-size: 11px;
+  }
+  .ix-file-missing .start-file-icon {
+    width: 31px;
+  }
+}
+html[data-theme='dark'] .ix-picker-body .picker-grid button {
+  border-color: var(--line);
+  background: var(--surface);
+}
+html[data-theme='dark'] .ix-picker-controls .search-field input {
+  background: transparent;
+}

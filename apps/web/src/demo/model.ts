@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import features from '../data/features.json';
 import {
   CreationPlanSchema,
   CreationSchema,
@@ -19,13 +20,22 @@ export const OutputSchema = z.object({
   id: z.string(),
   title: z.string(),
   asset: AssetKeySchema,
-  kind: z.enum(['image', 'video']),
-  layout: z.enum(['normal', 'poster', 'detail', 'editorial']),
+  kind: z.enum(['image', 'video', 'text']),
+  body: z.string().optional(),
+  poster: AssetKeySchema.optional(),
+  layout: z.enum([
+    'normal',
+    'poster',
+    'detail',
+    'editorial',
+    'background',
+    'cutout',
+  ]),
   brief: z.string(),
   revision: z.number().int().positive(),
 });
 export type Output = z.infer<typeof OutputSchema>;
-const SettingsSchema = z
+export const SettingsSchema = z
   .object({
     ratio: z.enum(['3:4', '1:1', '4:5', '2:3', '16:9']),
     count: z.enum(['1', '2', '4', '6']),
@@ -52,7 +62,9 @@ export const DemoPlanSchema = z.object({
 });
 export type DemoPlan = z.infer<typeof DemoPlanSchema>;
 const DemoVersionSchema = z.object({
-  record: VersionSchema,
+  record: VersionSchema.unwrap().extend({
+    kind: z.enum(['image', 'video', 'text']),
+  }),
   items: z.array(OutputSchema),
   snapshot: SnapshotSchema,
   adjustment: AdjustmentSchema.nullable(),
@@ -61,7 +73,23 @@ export type DemoVersion = z.infer<typeof DemoVersionSchema>;
 export const DemoCreationSchema = z.object({
   id: z.uuid(),
   shortId: z.string(),
-  sceneId: z.enum(['product', 'tryon', 'video', 'free-image', 'free-video']),
+  sceneId: z.enum([
+    'product',
+    'tryon',
+    'video',
+    'free-image',
+    'free-video',
+    'image-remix',
+    'image-background',
+    'image-cutout',
+    'video-product',
+    'video-motion',
+    'video-outfit',
+    'video-avatar',
+    'video-upscale',
+    'video-clean',
+    'video-transcript',
+  ]),
   name: z.string(),
   draft: z.boolean(),
   createdAt: z.iso.datetime(),
@@ -152,10 +180,65 @@ export function validateCreation(creation: DemoCreation, uploads: Material[]) {
     throw new Error(
       `请先准备${missing.map((role) => role.label).join('、')}。`,
     );
+  if (creation.sceneId === 'video-avatar' && !creation.settings.script?.trim())
+    throw new Error('请填写口播文稿。');
   if (creation.sceneId.startsWith('free-') && !creation.prompt.trim())
     throw new Error('请描述目标，或填入演示想法。');
 }
 export function outputsFor(creation: DemoCreation): Output[] {
+  const tool = features.VIDEO_TOOLS.find(
+    (item) => item.scene === creation.sceneId,
+  );
+  if (creation.sceneId === 'video-transcript')
+    return [
+      {
+        id: 'out-1',
+        title: '台词示例稿',
+        kind: 'text',
+        asset: 'bakery',
+        layout: 'normal',
+        brief: '手写预置文稿，非实时语音识别',
+        revision: 1,
+        body:
+          creation.settings.format === '纯文本'
+            ? '清晨，从一炉刚出炉的面包开始。\n手作的温度，藏在每一个细节里。\n来巷口面包房，留住今天的香气。'
+            : '[00:00–00:04] 清晨，从一炉刚出炉的面包开始。\n[00:04–00:08] 手作的温度，藏在每一个细节里。\n[00:08–00:12] 来巷口面包房，留住今天的香气。',
+      },
+    ];
+  if (creation.sceneId.startsWith('video-'))
+    return [
+      {
+        id: 'out-1',
+        title: tool?.name + ' · 预制样片',
+        kind: 'video',
+        asset: AssetKeySchema.parse(tool?.clip),
+        poster: AssetKeySchema.parse(tool?.poster),
+        layout: 'normal',
+        brief: '12 秒静态素材剪辑，不执行真实视频处理',
+        revision: 1,
+      },
+    ];
+  if (creation.sceneId.startsWith('image-'))
+    return Array.from(
+      { length: Number(creation.settings.count || 2) },
+      (_, i) => ({
+        id: `out-${i + 1}`,
+        title: `${requireScene(creation.sceneId).name} · 示意 ${i + 1}`,
+        kind: 'image' as const,
+        asset:
+          creation.sceneId === 'image-remix'
+            ? ('tea' as const)
+            : ('garment' as const),
+        layout:
+          creation.sceneId === 'image-cutout'
+            ? ('cutout' as const)
+            : creation.sceneId === 'image-background'
+              ? ('background' as const)
+              : ('normal' as const),
+        brief: '预制概念示意，不改变用户上传的图片',
+        revision: 1,
+      }),
+    );
   const count = Number(creation.settings.count || 1),
     scene = requireScene(creation.sceneId);
   let titles: string[];
@@ -311,12 +394,17 @@ export function advanceRun(creation: DemoCreation, now: number): DemoCreation {
           : item,
       )
     : creation.plan.items.map((item) => ({ ...item, revision: ordinal }));
-  const record = VersionSchema.parse({
+  const record = DemoVersionSchema.shape.record.parse({
     id: crypto.randomUUID(),
     creationId: creation.task.creationId,
     taskId: creation.task.id,
     ordinal,
-    kind: requireScene(creation.sceneId).output === '视频' ? 'video' : 'image',
+    kind:
+      creation.sceneId === 'video-transcript'
+        ? 'text'
+        : requireScene(creation.sceneId).output === '视频'
+          ? 'video'
+          : 'image',
     label: `V${ordinal} · 前端演示结果`,
     artifactUrl: null,
     simulated: true,

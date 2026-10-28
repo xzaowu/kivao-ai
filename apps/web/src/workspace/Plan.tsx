@@ -46,7 +46,7 @@ export function Plan({
         <h2>
           {plan.adjustment
             ? `只调整选中的 ${plan.adjustment.ids.length} 项`
-            : `这次将得到 ${plan.items.length}${scene.output === '视频' ? ' 条短片' : ' 张图片'}`}
+            : `这次将得到 ${plan.items.length}${scene.output === '文本' ? ' 份示例文稿' : scene.output === '视频' ? ' 条短片' : ' 张图片'}`}
         </h2>
         <p>
           {plan.adjustment
@@ -59,6 +59,12 @@ export function Plan({
           <div className="studio-plan-goal">
             <small>创作目标</small>
             <p>{creation.prompt}</p>
+          </div>
+        )}
+        {creation.sceneId === 'video-avatar' && (
+          <div className="studio-plan-goal">
+            <small>口播文稿 · 演示不会真实合成语音</small>
+            <p>{creation.settings.script}</p>
           </div>
         )}
         {plan.adjustment && (
@@ -75,7 +81,11 @@ export function Plan({
                 <p>{item.brief}</p>
               </div>
               <b>
-                {scene.output === '视频' ? '12秒' : creation.settings.ratio}
+                {item.kind === 'text'
+                  ? '文稿'
+                  : item.kind === 'video'
+                    ? '12秒'
+                    : creation.settings.ratio}
               </b>
             </li>
           ))}
@@ -101,7 +111,13 @@ export function Plan({
                 <dt>{field.label}</dt>
                 <dd>
                   {creation.settings[field.key]}
-                  {field.key === 'count' ? ' 张' : ''}
+                  {field.key === 'count'
+                    ? scene.output === '文本'
+                      ? ' 份'
+                      : scene.output === '视频'
+                        ? ' 条'
+                        : ' 张'
+                    : ''}
                 </dd>
               </div>
             ))}
@@ -110,7 +126,7 @@ export function Plan({
         <p className="adapter-note">
           {plan.source === 'mock_api'
             ? '计划来源：Mock API。上传文件仅在浏览器预览，API 使用模拟素材引用；配置、主体补充素材和输出结构由前端演示层保存。'
-            : '计划来源：前端演示层。自由创作尚无后端执行接口。'}{' '}
+            : '计划来源：前端演示层。此工具尚无后端执行接口。'}{' '}
           结果均为预制演示，不会理解提示词或真实编辑画面。
         </p>
         {error && (

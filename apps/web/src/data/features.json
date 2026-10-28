@@ -1,0 +1,1277 @@
+{
+  "IMAGE_TOOLS": [
+    {
+      "id": "product",
+      "scene": "product",
+      "name": "商品套图",
+      "icon": "grid",
+      "summary": "一张商品图，做成上新套图",
+      "input": "商品图片",
+      "output": "4–6 张成套图片",
+      "art": "product",
+      "tag": "新手推荐"
+    },
+    {
+      "id": "tryon",
+      "scene": "tryon",
+      "name": "AI 换装",
+      "icon": "image",
+      "summary": "指定模特，穿上你选择的服装",
+      "input": "模特＋服装",
+      "output": "2–4 张换装效果图",
+      "art": "tryon"
+    },
+    {
+      "id": "remix",
+      "scene": "image-remix",
+      "name": "图片复刻",
+      "icon": "book",
+      "summary": "参考构图风格，呈现你的商品",
+      "input": "参考图＋商品图",
+      "output": "同风格商品图片",
+      "art": "remix"
+    },
+    {
+      "id": "background",
+      "scene": "image-background",
+      "name": "更换背景",
+      "icon": "image",
+      "summary": "保留主体，换个适合它的场景",
+      "input": "主体图片",
+      "output": "新背景效果图",
+      "art": "background"
+    },
+    {
+      "id": "cutout",
+      "scene": "image-cutout",
+      "name": "去除背景",
+      "icon": "sliders",
+      "summary": "提取图片主体，准备干净的底图",
+      "input": "主体图片",
+      "output": "主体提取效果示意",
+      "art": "cutout"
+    },
+    {
+      "id": "free",
+      "scene": "free-image",
+      "name": "自由生图",
+      "icon": "spark",
+      "summary": "用一句话，描述你想要的画面",
+      "input": "想法／参考图",
+      "output": "2–4 张创意图片",
+      "art": "free"
+    }
+  ],
+  "IMAGE_TEMPLATES": [
+    {
+      "id": "tea-launch",
+      "title": "茶饮新品 · 一套图上新",
+      "category": "电商商品",
+      "tool": "product",
+      "art": "product",
+      "settings": {
+        "channel": "电商上新",
+        "style": "自然日光",
+        "count": "4",
+        "ratio": "3:4"
+      }
+    },
+    {
+      "id": "beauty-launch",
+      "title": "护肤品 · 极简商品视觉",
+      "category": "电商商品",
+      "tool": "product",
+      "art": "beauty",
+      "settings": {
+        "channel": "品牌官网",
+        "style": "极简影棚",
+        "count": "4",
+        "ratio": "1:1"
+      }
+    },
+    {
+      "id": "shirt-model",
+      "title": "指定服装 · 模特上身展示",
+      "category": "服装人像",
+      "tool": "tryon",
+      "art": "tryon",
+      "settings": {
+        "setting": "简洁影棚",
+        "composition": "半身展示",
+        "count": "2",
+        "ratio": "3:4"
+      }
+    },
+    {
+      "id": "copy-light",
+      "title": "光影构图 · 商品风格复刻",
+      "category": "电商商品",
+      "tool": "remix",
+      "art": "remix",
+      "settings": {
+        "reference": "构图与光影",
+        "strength": "适度参考",
+        "count": "2",
+        "ratio": "3:4"
+      }
+    },
+    {
+      "id": "brand-poster",
+      "title": "春日上新 · 品牌海报",
+      "category": "海报图文",
+      "tool": "free",
+      "art": "poster",
+      "goal": "为山间茶事制作春日上新海报，自然日光、石台与茶叶，留出品牌标题的位置。",
+      "settings": {
+        "style": "极简产品",
+        "count": "2",
+        "ratio": "3:4"
+      }
+    },
+    {
+      "id": "studio-backdrop",
+      "title": "服装展示 · 简洁影棚",
+      "category": "服装人像",
+      "tool": "background",
+      "art": "background",
+      "settings": {
+        "setting": "浅蓝影棚",
+        "preserve": "主体外观与颜色",
+        "count": "2",
+        "ratio": "3:4"
+      }
+    },
+    {
+      "id": "clean-garment",
+      "title": "服装素材 · 干净主体底图",
+      "category": "图片处理",
+      "tool": "cutout",
+      "art": "cutout",
+      "settings": {
+        "background": "透明底示意",
+        "edge": "保留自然边缘",
+        "count": "1",
+        "ratio": "1:1"
+      }
+    },
+    {
+      "id": "social-cover",
+      "title": "品牌日常 · 社媒封面",
+      "category": "海报图文",
+      "tool": "free",
+      "art": "social",
+      "goal": "温暖生活方式风格的品牌社媒封面，护肤品与自然光，画面简洁，适当留白。",
+      "settings": {
+        "style": "生活方式",
+        "count": "2",
+        "ratio": "1:1"
+      }
+    },
+    {
+      "id": "outfit-daily",
+      "title": "人物穿搭 · 日常搭配",
+      "category": "服装人像",
+      "tool": "tryon",
+      "art": "fashion",
+      "settings": {
+        "setting": "室内生活",
+        "composition": "全身搭配",
+        "count": "2",
+        "ratio": "2:3"
+      }
+    },
+    {
+      "id": "detail-close",
+      "title": "包装细节 · 商品质感",
+      "category": "电商商品",
+      "tool": "remix",
+      "art": "detail",
+      "settings": {
+        "reference": "仅画面风格",
+        "strength": "轻度参考",
+        "count": "2",
+        "ratio": "1:1"
+      }
+    },
+    {
+      "id": "cutout-white",
+      "title": "上架准备 · 白底展示",
+      "category": "图片处理",
+      "tool": "cutout",
+      "art": "white",
+      "settings": {
+        "background": "纯白背景",
+        "edge": "保留自然边缘",
+        "count": "1",
+        "ratio": "1:1"
+      }
+    },
+    {
+      "id": "warm-scene",
+      "title": "产品陈列 · 温暖背景",
+      "category": "图片处理",
+      "tool": "background",
+      "art": "warm",
+      "settings": {
+        "setting": "温暖米色",
+        "preserve": "主体外观与颜色",
+        "count": "2",
+        "ratio": "3:4"
+      }
+    }
+  ],
+  "VIDEO_TOOLS": [
+    {
+      "id": "free",
+      "scene": "free-video",
+      "name": "自由创作",
+      "short": "自由创作",
+      "summary": "从想法或图片，开始一段短片",
+      "input": "描述／参考图",
+      "out": "1 条演示短片",
+      "poster": "bakery",
+      "clip": "bakery-demo"
+    },
+    {
+      "id": "reference",
+      "scene": "video",
+      "name": "参考视频创作",
+      "short": "参考视频",
+      "summary": "借鉴镜头节奏，做自己的内容",
+      "input": "参考视频＋主体图",
+      "out": "镜头计划＋短片",
+      "poster": "bakery",
+      "clip": "bakery-demo",
+      "tag": "新手推荐"
+    },
+    {
+      "id": "product",
+      "scene": "video-product",
+      "name": "商品视频",
+      "short": "商品视频",
+      "summary": "让商品图，成为一段展示短片",
+      "input": "商品图＋细节图",
+      "out": "1 条商品展示样片",
+      "poster": "tea",
+      "clip": "product-demo"
+    },
+    {
+      "id": "motion",
+      "scene": "video-motion",
+      "name": "动作模仿",
+      "short": "动作模仿",
+      "summary": "指定人物，参考动作与镜头",
+      "input": "动作参考＋人物图",
+      "out": "人物视频流程演示",
+      "poster": "model",
+      "clip": "portrait-demo"
+    },
+    {
+      "id": "outfit",
+      "scene": "video-outfit",
+      "name": "服装展示",
+      "short": "服装展示",
+      "summary": "选择模特与服装，准备展示短片",
+      "input": "模特图＋服装图",
+      "out": "1 条服装展示样片",
+      "poster": "tryon",
+      "clip": "fashion-demo"
+    },
+    {
+      "id": "avatar",
+      "scene": "video-avatar",
+      "name": "数字人口播",
+      "short": "数字人口播",
+      "summary": "用人物形象与文稿，组织口播内容",
+      "input": "人物图＋口播稿",
+      "out": "口播制作流程演示",
+      "poster": "model",
+      "clip": "portrait-demo"
+    },
+    {
+      "id": "upscale",
+      "scene": "video-upscale",
+      "name": "视频高清",
+      "short": "视频高清",
+      "summary": "设置目标清晰度，检查画面细节",
+      "input": "待处理视频",
+      "out": "增强效果流程预览",
+      "poster": "serum",
+      "clip": "beauty-demo",
+      "utility": true
+    },
+    {
+      "id": "clean",
+      "scene": "video-clean",
+      "name": "去除字幕",
+      "short": "去除字幕",
+      "summary": "指定字幕区域，检查处理前后",
+      "input": "带字幕的视频",
+      "out": "字幕处理效果示意",
+      "poster": "bakery",
+      "clip": "bakery-demo",
+      "utility": true
+    },
+    {
+      "id": "transcript",
+      "scene": "video-transcript",
+      "name": "提取台词",
+      "short": "提取台词",
+      "summary": "从视频整理台词，保留时间位置",
+      "input": "带对白的视频",
+      "out": "可复制的示例文稿",
+      "poster": "bakery",
+      "clip": "caption-demo",
+      "utility": true
+    }
+  ],
+  "VIDEO_CASES": [
+    {
+      "id": "bakery-morning",
+      "title": "面包房 · 留住清晨香气",
+      "category": "门店探店",
+      "tool": "reference",
+      "poster": "bakery",
+      "clip": "bakery-demo",
+      "settings": {
+        "channel": "视频号横屏",
+        "reference": "镜头结构与节奏",
+        "captions": "无字幕"
+      }
+    },
+    {
+      "id": "tea-story",
+      "title": "一罐春天 · 茶饮新品",
+      "category": "电商带货",
+      "tool": "product",
+      "poster": "tea",
+      "clip": "product-demo",
+      "settings": {
+        "direction": "新品上新",
+        "focus": "商品外观与质感"
+      }
+    },
+    {
+      "id": "shirt-look",
+      "title": "蓝色衬衫 · 日常穿搭",
+      "category": "服装人像",
+      "tool": "outfit",
+      "poster": "tryon",
+      "clip": "fashion-demo",
+      "settings": {
+        "setting": "简洁影棚",
+        "composition": "半身展示"
+      }
+    },
+    {
+      "id": "beauty-film",
+      "title": "光影之间 · 护肤品展示",
+      "category": "电商带货",
+      "tool": "product",
+      "poster": "serum",
+      "clip": "beauty-demo",
+      "demoSubject": "serum",
+      "settings": {
+        "direction": "质感展示",
+        "focus": "材质与包装细节"
+      }
+    },
+    {
+      "id": "brand-greeting",
+      "title": "品牌介绍 · 口播内容",
+      "category": "品牌内容",
+      "tool": "avatar",
+      "poster": "model",
+      "clip": "portrait-demo",
+      "settings": {
+        "tone": "自然介绍",
+        "script": "你好，欢迎来到山间茶事。今天想与你分享一杯茶，以及一段慢下来的日常。"
+      }
+    },
+    {
+      "id": "portrait-motion",
+      "title": "人物镜头 · 动作参考",
+      "category": "服装人像",
+      "tool": "motion",
+      "poster": "model",
+      "clip": "portrait-demo",
+      "settings": {
+        "reference": "动作与镜头",
+        "preserve": "人物身份与服装"
+      }
+    },
+    {
+      "id": "warm-shop",
+      "title": "温暖门店 · 品牌日常",
+      "category": "门店探店",
+      "tool": "free",
+      "poster": "bakery",
+      "clip": "bakery-demo",
+      "goal": "一段温暖晨光下的面包房短片，展示手作细节、刚出炉的可颂与门店氛围。",
+      "settings": {
+        "channel": "门店展示",
+        "captions": "无字幕"
+      }
+    },
+    {
+      "id": "serum-brand",
+      "title": "自然质感 · 品牌短片",
+      "category": "品牌内容",
+      "tool": "free",
+      "poster": "serum",
+      "clip": "beauty-demo",
+      "goal": "用温暖自然光展示护肤品的玻璃与精华质感，缓慢运镜，画面简洁。",
+      "settings": {
+        "channel": "品牌介绍",
+        "captions": "无字幕"
+      }
+    },
+    {
+      "id": "fashion-catalog",
+      "title": "服装目录 · 单品展示",
+      "category": "服装人像",
+      "tool": "outfit",
+      "poster": "tryon",
+      "clip": "fashion-demo",
+      "settings": {
+        "setting": "简洁影棚",
+        "composition": "服装细节"
+      }
+    },
+    {
+      "id": "tea-channel",
+      "title": "商品上新 · 渠道展示",
+      "category": "电商带货",
+      "tool": "product",
+      "poster": "tea",
+      "clip": "product-demo",
+      "settings": {
+        "direction": "新品上新",
+        "focus": "材质与包装细节"
+      }
+    },
+    {
+      "id": "shop-reference",
+      "title": "镜头参考 · 门店故事",
+      "category": "门店探店",
+      "tool": "reference",
+      "poster": "bakery",
+      "clip": "bakery-demo",
+      "settings": {
+        "channel": "门店屏幕",
+        "reference": "仅镜头结构",
+        "captions": "无字幕"
+      }
+    },
+    {
+      "id": "brand-person",
+      "title": "人物介绍 · 品牌问候",
+      "category": "品牌内容",
+      "tool": "avatar",
+      "poster": "model",
+      "clip": "portrait-demo",
+      "settings": {
+        "tone": "温和分享",
+        "script": "你好，很高兴在这里与你见面。我们希望把认真制作的好东西，带进你的日常。"
+      }
+    }
+  ],
+  "CV_TEMPLATES": [
+    {
+      "id": "product-launch",
+      "name": "一张商品图，做齐上新物料",
+      "category": "电商商品",
+      "scene": "product",
+      "poster": "tea",
+      "type": "图片流程",
+      "out": "4张商品图",
+      "summary": "从主体参考、创作方向到成套结果，放在同一张画布。",
+      "goal": "为山间茶事制作一套自然日光风格的上新视觉。"
+    },
+    {
+      "id": "fashion-tryon",
+      "name": "指定模特，换一套穿搭",
+      "category": "服装人像",
+      "scene": "tryon",
+      "poster": "tryon",
+      "type": "图片流程",
+      "out": "2张换装图",
+      "summary": "人物和服装各有角色，审核时能随时对照。",
+      "goal": "保留人物特征，展示蓝色亚麻衬衫的颜色与结构。"
+    },
+    {
+      "id": "shop-film",
+      "name": "门店故事，从镜头参考开始",
+      "category": "门店营销",
+      "scene": "video",
+      "poster": "bakery",
+      "clip": "bakery-demo",
+      "type": "视频流程",
+      "out": "1条短片",
+      "summary": "分开准备参考短片和自己的门店素材，再确认镜头。",
+      "goal": "借鉴参考短片的镜头与节奏，制作门店清晨短片。"
+    },
+    {
+      "id": "beauty-campaign",
+      "name": "光影之间，护肤品上新",
+      "category": "电商商品",
+      "scene": "product",
+      "poster": "serum",
+      "demoSubject": "serum",
+      "type": "图片流程",
+      "out": "4张商品图",
+      "summary": "把品牌参考、商品素材与输出方向连起来。",
+      "goal": "用温暖自然光与极简构图表现护肤品的材质和包装。"
+    },
+    {
+      "id": "brand-film",
+      "name": "让品牌日常，成为一段短片",
+      "category": "创意短片",
+      "scene": "free-video",
+      "poster": "serum",
+      "clip": "beauty-demo",
+      "type": "视频流程",
+      "out": "1条演示短片",
+      "summary": "从一个清晰方向开始，把想法和素材落到镜头计划。",
+      "goal": "一段温暖自然光下的品牌短片，突出玻璃与精华的质感。"
+    },
+    {
+      "id": "fashion-series",
+      "name": "服装展示，先对齐每个细节",
+      "category": "服装人像",
+      "scene": "video-outfit",
+      "poster": "tryon",
+      "clip": "fashion-demo",
+      "type": "视频流程",
+      "out": "1条演示短片",
+      "summary": "模特、服装、展示方向与视频版本集中整理。",
+      "goal": "用简洁影棚与半身镜头展示指定服装。"
+    },
+    {
+      "id": "moodboard",
+      "name": "先收集灵感，再找到方向",
+      "category": "灵感整理",
+      "scene": null,
+      "poster": "serum",
+      "type": "灵感画板",
+      "out": "参考与便签",
+      "summary": "把商品、人物、环境参考并排比较，随时补充便签。",
+      "goal": "收集自然光、材质与生活方式参考，整理创作方向。"
+    },
+    {
+      "id": "social-poster",
+      "name": "把一罐春天，做成品牌海报",
+      "category": "电商商品",
+      "scene": "free-image",
+      "poster": "tea",
+      "type": "图片流程",
+      "out": "2张演示图片",
+      "summary": "参考图和文案一起准备，保留每一版想法。",
+      "goal": "为山间茶事制作春日上新海报，自然日光、石台与茶叶，留出品牌标题位置。"
+    }
+  ],
+  "freeScenes": {
+    "free-image": {
+      "id": "free-image",
+      "name": "自由图片创作",
+      "category": "自由创作",
+      "output": "图片",
+      "input": "一张图片",
+      "image": "serum",
+      "ready": true,
+      "roles": [
+        {
+          "id": "reference",
+          "label": "参考图片",
+          "required": false,
+          "media": "image",
+          "demo": "serum",
+          "help": "可选。用于说明主体、风格或构图。"
+        }
+      ],
+      "config": [
+        {
+          "key": "style",
+          "label": "画面风格",
+          "options": ["自然摄影", "极简产品", "生活方式"]
+        },
+        {
+          "key": "ratio",
+          "label": "画面比例",
+          "options": ["3:4", "1:1", "16:9"]
+        },
+        {
+          "key": "count",
+          "label": "图片数量",
+          "options": [
+            ["2", "2 张"],
+            ["4", "4 张"]
+          ]
+        }
+      ],
+      "checks": [
+        "主体和画面符合目标",
+        "文字与品牌内容可用",
+        "细节和构图适合使用"
+      ],
+      "adjustments": ["背景更简洁", "调整构图", "强化主体细节"],
+      "out": "2–4 张图片"
+    },
+    "free-video": {
+      "id": "free-video",
+      "name": "自由视频创作",
+      "category": "自由创作",
+      "output": "视频",
+      "input": "一张图片",
+      "image": "bakery",
+      "ready": true,
+      "roles": [
+        {
+          "id": "subject",
+          "label": "主体参考图",
+          "required": false,
+          "media": "image",
+          "demo": "bakery",
+          "help": "可选。用于说明产品、门店或人物主体。"
+        }
+      ],
+      "config": [
+        {
+          "key": "channel",
+          "label": "发布用途",
+          "options": ["门店展示", "社媒短片", "品牌介绍"]
+        },
+        {
+          "key": "captions",
+          "label": "字幕方式",
+          "options": ["简洁字幕", "无字幕"]
+        }
+      ],
+      "checks": [
+        "镜头与节奏符合目标",
+        "主体和画面内容正确",
+        "字幕与品牌内容可用"
+      ],
+      "adjustments": ["节奏更利落", "突出主体", "字幕更克制"],
+      "out": "1 条 12 秒演示短片"
+    },
+    "image-remix": {
+      "id": "image-remix",
+      "name": "图片复刻",
+      "category": "电商商品",
+      "output": "图片",
+      "image": "serum",
+      "ready": true,
+      "roles": [
+        {
+          "id": "reference",
+          "label": "风格参考图",
+          "demo": "serum",
+          "help": "参考构图、光影与氛围，不复用原图品牌。",
+          "required": true,
+          "media": "image"
+        },
+        {
+          "id": "subject",
+          "label": "自己的商品图",
+          "demo": "tea",
+          "help": "最终画面中要保留的商品主体。",
+          "required": true,
+          "media": "image"
+        }
+      ],
+      "config": [
+        {
+          "key": "reference",
+          "label": "参考内容",
+          "options": ["构图与光影", "仅画面风格", "仅构图"]
+        },
+        {
+          "key": "strength",
+          "label": "参考程度",
+          "options": ["适度参考", "轻度参考"]
+        },
+        {
+          "key": "count",
+          "label": "输出数量",
+          "options": [
+            ["2", "2 张"],
+            ["4", "4 张"]
+          ]
+        },
+        {
+          "key": "ratio",
+          "label": "画面比例",
+          "options": ["3:4", "1:1", "4:5"]
+        }
+      ],
+      "checks": [
+        "商品主体与指定素材一致",
+        "参考风格与构图适合目标",
+        "没有不需要的品牌与文字"
+      ],
+      "adjustments": ["更接近参考光影", "减少背景装饰", "突出商品主体"],
+      "out": "2–4 张同风格图片"
+    },
+    "image-background": {
+      "id": "image-background",
+      "name": "更换背景",
+      "category": "图片处理",
+      "output": "图片",
+      "image": "garment",
+      "ready": true,
+      "roles": [
+        {
+          "id": "subject",
+          "label": "主体图片",
+          "demo": "garment",
+          "help": "需要保留的商品或人物；轮廓清晰、主体完整。",
+          "required": true,
+          "media": "image"
+        },
+        {
+          "id": "background",
+          "label": "背景参考图",
+          "demo": "serum",
+          "help": "可选，用来说明背景色彩和环境。",
+          "required": false,
+          "media": "image"
+        }
+      ],
+      "config": [
+        {
+          "key": "setting",
+          "label": "新背景方向",
+          "options": ["浅蓝影棚", "温暖米色", "自然日光"]
+        },
+        {
+          "key": "preserve",
+          "label": "保留内容",
+          "options": ["主体外观与颜色", "主体与原有阴影"]
+        },
+        {
+          "key": "count",
+          "label": "输出数量",
+          "options": [
+            ["2", "2 张"],
+            ["4", "4 张"]
+          ]
+        },
+        {
+          "key": "ratio",
+          "label": "画面比例",
+          "options": ["3:4", "1:1", "4:5"]
+        }
+      ],
+      "checks": [
+        "主体外观、颜色和细节一致",
+        "背景光线与主体协调",
+        "边缘与投影自然"
+      ],
+      "adjustments": ["背景更简洁", "光线更自然", "保留主体细节"],
+      "out": "2–4 张新背景效果图"
+    },
+    "image-cutout": {
+      "id": "image-cutout",
+      "name": "去除背景",
+      "category": "图片处理",
+      "output": "图片",
+      "image": "garment",
+      "ready": true,
+      "roles": [
+        {
+          "id": "subject",
+          "label": "待处理图片",
+          "demo": "garment",
+          "help": "完整、清晰的商品或人物图；本轮只演示处理流程。",
+          "required": true,
+          "media": "image"
+        }
+      ],
+      "config": [
+        {
+          "key": "background",
+          "label": "背景形式",
+          "options": ["透明底示意", "纯白背景"]
+        },
+        {
+          "key": "edge",
+          "label": "边缘处理",
+          "options": ["保留自然边缘", "更干净的轮廓"]
+        },
+        {
+          "key": "ratio",
+          "label": "输出画幅",
+          "options": ["1:1", "3:4"]
+        }
+      ],
+      "checks": [
+        "主体完整且没有遗漏",
+        "边缘和细小结构完整",
+        "背景形式满足使用目标"
+      ],
+      "adjustments": ["修正主体边缘", "保留更多细节", "减少边缘残留"],
+      "out": "1 张主体提取效果示意"
+    },
+    "video-product": {
+      "id": "video-product",
+      "name": "商品视频",
+      "category": "视频内容",
+      "workspace": "videos",
+      "output": "视频",
+      "image": "tea",
+      "ready": true,
+      "roles": [
+        {
+          "id": "product",
+          "label": "商品正面图",
+          "demo": "tea",
+          "media": "image",
+          "help": "完整、清晰地展示要保留的商品。",
+          "required": true
+        },
+        {
+          "id": "detail",
+          "label": "商品细节图",
+          "demo": "tea-detail",
+          "media": "image",
+          "help": "可选，补充包装和材质。",
+          "required": false
+        }
+      ],
+      "config": [
+        {
+          "key": "direction",
+          "label": "制作方向",
+          "options": ["新品上新", "质感展示", "日常使用"]
+        },
+        {
+          "key": "focus",
+          "label": "展示重点",
+          "options": ["商品外观与质感", "材质与包装细节"]
+        }
+      ],
+      "checks": [
+        "商品外观与指定素材一致",
+        "镜头结构与展示重点清楚",
+        "画面和品牌信息可用"
+      ],
+      "adjustments": ["突出商品主体", "增加细节展示", "镜头更简洁"],
+      "out": "1条商品展示演示短片"
+    },
+    "video-motion": {
+      "id": "video-motion",
+      "name": "动作模仿",
+      "category": "视频内容",
+      "workspace": "videos",
+      "output": "视频",
+      "image": "model",
+      "ready": true,
+      "roles": [
+        {
+          "id": "reference",
+          "label": "动作参考视频",
+          "demo": "portrait-reference",
+          "media": "video",
+          "help": "指定需要参考的动作与镜头；演示样片仅为静态运镜。",
+          "required": true
+        },
+        {
+          "id": "person",
+          "label": "目标人物图",
+          "demo": "model",
+          "media": "image",
+          "help": "使用清晰的成年人物图，保留身份与外观。",
+          "required": true
+        }
+      ],
+      "config": [
+        {
+          "key": "reference",
+          "label": "参考哪些部分",
+          "options": ["动作与镜头", "仅动作结构", "仅镜头运动"]
+        },
+        {
+          "key": "preserve",
+          "label": "始终保留",
+          "options": ["人物身份与服装", "人物身份与背景"]
+        }
+      ],
+      "checks": [
+        "人物身份和外观一致",
+        "动作与镜头参考方向清楚",
+        "手部、肢体与边缘自然"
+      ],
+      "adjustments": ["保留人物特征", "动作更自然", "镜头更稳定"],
+      "out": "1条人物视频流程演示"
+    },
+    "video-outfit": {
+      "id": "video-outfit",
+      "name": "服装展示",
+      "category": "服装人像",
+      "workspace": "videos",
+      "output": "视频",
+      "image": "tryon",
+      "ready": true,
+      "roles": [
+        {
+          "id": "model",
+          "label": "模特图",
+          "demo": "model",
+          "media": "image",
+          "help": "清晰的成年人物图，保留身份与外观。",
+          "required": true
+        },
+        {
+          "id": "garment",
+          "label": "服装正面图",
+          "demo": "garment",
+          "media": "image",
+          "help": "完整展示服装颜色、领口、袖口与结构。",
+          "required": true
+        }
+      ],
+      "config": [
+        {
+          "key": "setting",
+          "label": "拍摄情境",
+          "options": ["简洁影棚", "生活场景"]
+        },
+        {
+          "key": "composition",
+          "label": "展示重点",
+          "options": ["半身展示", "服装细节"]
+        }
+      ],
+      "checks": [
+        "模特与服装对应正确",
+        "服装颜色和结构准确",
+        "镜头展示与使用目标一致"
+      ],
+      "adjustments": ["突出服装细节", "保留模特特征", "节奏更简洁"],
+      "out": "1条服装展示演示样片"
+    },
+    "video-avatar": {
+      "id": "video-avatar",
+      "name": "数字人口播",
+      "category": "品牌内容",
+      "workspace": "videos",
+      "output": "视频",
+      "image": "model",
+      "ready": true,
+      "roles": [
+        {
+          "id": "person",
+          "label": "人物形象图",
+          "demo": "model",
+          "media": "image",
+          "help": "清晰的成年人物正面图；用于核对口播形象。",
+          "required": true
+        }
+      ],
+      "config": [
+        {
+          "key": "script",
+          "label": "口播文稿",
+          "type": "textarea",
+          "required": true,
+          "maxlength": 500
+        },
+        {
+          "key": "tone",
+          "label": "表达方式",
+          "options": ["自然介绍", "温和分享", "清晰讲解"]
+        }
+      ],
+      "checks": [
+        "人物形象与指定素材一致",
+        "文稿内容与表达方式合适",
+        "语音和口型符合预期（演示未接入）"
+      ],
+      "adjustments": ["文稿更简洁", "表达更自然", "保持人物形象"],
+      "out": "1条口播制作流程演示"
+    },
+    "video-upscale": {
+      "id": "video-upscale",
+      "name": "视频高清",
+      "category": "后期处理",
+      "workspace": "videos",
+      "output": "视频",
+      "image": "serum",
+      "ready": true,
+      "roles": [
+        {
+          "id": "source",
+          "label": "待增强视频",
+          "demo": "product-reference",
+          "media": "video",
+          "help": "选择画面清晰、可正常播放的原视频。",
+          "required": true
+        }
+      ],
+      "config": [
+        {
+          "key": "resolution",
+          "label": "目标清晰度（演示）",
+          "options": ["720p", "1080p"]
+        },
+        {
+          "key": "priority",
+          "label": "优先处理",
+          "options": ["整体清晰度", "细节与噪点"]
+        }
+      ],
+      "checks": [
+        "画面细节没有异常",
+        "没有过度锐化与噪点",
+        "画面节奏与原视频一致"
+      ],
+      "adjustments": ["减少过度锐化", "保留自然细节", "减少画面噪点"],
+      "out": "1条增强效果流程预览"
+    },
+    "video-clean": {
+      "id": "video-clean",
+      "name": "去除字幕",
+      "category": "后期处理",
+      "workspace": "videos",
+      "output": "视频",
+      "image": "bakery",
+      "ready": true,
+      "roles": [
+        {
+          "id": "source",
+          "label": "带字幕的视频",
+          "demo": "caption-reference",
+          "media": "video",
+          "help": "选择带有画面字幕的原视频；演示使用预制字幕样片。",
+          "required": true
+        }
+      ],
+      "config": [
+        {
+          "key": "region",
+          "label": "字幕位置",
+          "options": ["画面底部", "画面中部", "自定义区域（预览）"]
+        },
+        {
+          "key": "preserve",
+          "label": "保留内容",
+          "options": ["主体与背景", "主体、背景与原声"]
+        }
+      ],
+      "checks": [
+        "字幕区域没有明显残留",
+        "主体与背景结构完整",
+        "没有新产生的文字或异常"
+      ],
+      "adjustments": ["缩小处理区域", "修复背景衔接", "保留更多细节"],
+      "out": "1条字幕处理效果示意"
+    },
+    "video-transcript": {
+      "id": "video-transcript",
+      "name": "提取台词",
+      "category": "后期处理",
+      "workspace": "videos",
+      "output": "文本",
+      "image": "bakery",
+      "ready": true,
+      "roles": [
+        {
+          "id": "source",
+          "label": "待转写视频",
+          "demo": "caption-reference",
+          "media": "video",
+          "help": "选择有对白的视频；本轮输出为预置示例文稿。",
+          "required": true
+        }
+      ],
+      "config": [
+        {
+          "key": "language",
+          "label": "识别语言（演示）",
+          "options": ["中文"]
+        },
+        {
+          "key": "format",
+          "label": "文稿格式",
+          "options": ["含时间码", "纯文本"]
+        }
+      ],
+      "checks": [
+        "文本内容与视频对白一致（演示稿需自行核对）",
+        "分段与时间位置清楚",
+        "名称和关键信息正确"
+      ],
+      "adjustments": ["调整文稿分段", "核对专有名称", "简化时间标记"],
+      "out": "1份预置台词示例稿"
+    }
+  },
+  "defaults": {
+    "product": {
+      "channel": "电商上新",
+      "style": "自然日光",
+      "count": "4",
+      "ratio": "3:4"
+    },
+    "tryon": {
+      "setting": "简洁影棚",
+      "composition": "半身展示",
+      "count": "2",
+      "ratio": "3:4"
+    },
+    "video": {
+      "channel": "视频号横屏",
+      "reference": "镜头结构与节奏",
+      "captions": "简洁字幕",
+      "count": "1",
+      "ratio": "16:9"
+    },
+    "free-image": {
+      "style": "自然摄影",
+      "ratio": "3:4",
+      "count": "2"
+    },
+    "free-video": {
+      "channel": "门店展示",
+      "captions": "简洁字幕",
+      "ratio": "16:9",
+      "count": "1"
+    },
+    "image-remix": {
+      "reference": "构图与光影",
+      "strength": "适度参考",
+      "count": "2",
+      "ratio": "3:4"
+    },
+    "image-background": {
+      "setting": "浅蓝影棚",
+      "preserve": "主体外观与颜色",
+      "count": "2",
+      "ratio": "3:4"
+    },
+    "image-cutout": {
+      "background": "透明底示意",
+      "edge": "保留自然边缘",
+      "count": "1",
+      "ratio": "1:1"
+    },
+    "video-product": {
+      "direction": "新品上新",
+      "focus": "商品外观与质感",
+      "ratio": "16:9",
+      "count": "1"
+    },
+    "video-motion": {
+      "reference": "动作与镜头",
+      "preserve": "人物身份与服装",
+      "ratio": "16:9",
+      "count": "1"
+    },
+    "video-outfit": {
+      "setting": "简洁影棚",
+      "composition": "半身展示",
+      "ratio": "16:9",
+      "count": "1"
+    },
+    "video-avatar": {
+      "script": "你好，欢迎来到山间茶事。今天想与你分享一杯茶，以及一段慢下来的日常。",
+      "tone": "自然介绍",
+      "ratio": "16:9",
+      "count": "1"
+    },
+    "video-upscale": {
+      "resolution": "1080p",
+      "priority": "整体清晰度",
+      "ratio": "16:9",
+      "count": "1"
+    },
+    "video-clean": {
+      "region": "画面底部",
+      "preserve": "主体与背景",
+      "ratio": "16:9",
+      "count": "1"
+    },
+    "video-transcript": {
+      "language": "中文",
+      "format": "含时间码",
+      "ratio": "16:9",
+      "count": "1"
+    }
+  },
+  "materials": [
+    {
+      "id": "tea",
+      "name": "山间茶事 · 商品正面参考",
+      "asset": "tea",
+      "media": "image",
+      "role": "商品图"
+    },
+    {
+      "id": "tea-detail",
+      "name": "山间茶事 · 包装细节参考",
+      "asset": "tea",
+      "media": "image",
+      "role": "细节图"
+    },
+    {
+      "id": "serum",
+      "name": "AURA · 品牌参考",
+      "asset": "serum",
+      "media": "image",
+      "role": "商品图"
+    },
+    {
+      "id": "model",
+      "name": "成年模特 · 白色上衣",
+      "asset": "model",
+      "media": "image",
+      "role": "模特图"
+    },
+    {
+      "id": "garment",
+      "name": "蓝色亚麻衬衫 · 正面",
+      "asset": "garment",
+      "media": "image",
+      "role": "服装图"
+    },
+    {
+      "id": "reference",
+      "name": "面包房 · 三镜头参考短片",
+      "asset": "bakery-demo",
+      "poster": "bakery",
+      "media": "video",
+      "role": "参考视频"
+    },
+    {
+      "id": "bakery",
+      "name": "巷口面包房 · 门店素材",
+      "asset": "bakery",
+      "media": "image",
+      "role": "主体素材"
+    },
+    {
+      "id": "portrait-reference",
+      "name": "人物镜头 · 静态运镜演示",
+      "asset": "portrait-demo",
+      "poster": "model",
+      "media": "video",
+      "role": "人物参考"
+    },
+    {
+      "id": "product-reference",
+      "name": "产品光影 · 预制参考短片",
+      "asset": "beauty-demo",
+      "poster": "serum",
+      "media": "video",
+      "role": "视频参考"
+    },
+    {
+      "id": "caption-reference",
+      "name": "面包房 · 预制字幕样片",
+      "asset": "caption-demo",
+      "poster": "bakery",
+      "media": "video",
+      "role": "字幕参考"
+    }
+  ]
+}

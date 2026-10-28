@@ -1,0 +1,313 @@
+/* React migration additions; source geometry and palette remain in the three prototype stylesheets. */
+dialog {
+  margin: auto;
+}
+ul {
+  list-style: disc;
+}
+ol {
+  list-style: decimal;
+}
+.dl-row {
+  display: contents;
+}
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 12px;
+  z-index: 150;
+  padding: 10px 18px;
+  background: #fff;
+  color: #0b2540;
+}
+.skip-link:focus {
+  top: 8px;
+}
+.credit-chip {
+  font-size: 10px;
+  white-space: nowrap;
+  color: #617f9e;
+  padding: 5px 8px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+}
+.header-right {
+  gap: 14px;
+}
+.adapter-note {
+  font-size: 10px;
+  line-height: 1.9;
+  color: #566f86;
+  margin-top: 16px;
+}
+.app-notice {
+  margin: 10px 26px;
+  padding: 10px 14px;
+  border: 1px solid #e8c58c;
+  border-radius: 6px;
+  background: #fff8e9;
+  color: #78521b;
+  font-size: 12px;
+}
+.app-notice .text-link {
+  margin-left: 8px;
+}
+.inline-error,
+.upload-error {
+  color: #a22e25;
+  font-size: 12px;
+  line-height: 1.8;
+}
+.inline-error {
+  margin-top: 16px;
+}
+.upload-error {
+  display: block;
+  max-width: 290px;
+}
+.api-samples {
+  margin-top: 28px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  color: #627d94;
+  font-size: 12px;
+}
+.api-samples summary {
+  cursor: pointer;
+  min-height: 36px;
+}
+.api-samples ul {
+  padding-left: 20px;
+  line-height: 2;
+}
+.studio-plan-summary dl .dl-row {
+  display: contents;
+}
+.canvas-viewport {
+  max-width: 100%;
+}
+button:disabled {
+  pointer-events: auto;
+}
+@media (max-width: 760px) {
+  .header-right {
+    gap: 4px;
+  }
+  .header-right .demo-label {
+    display: none;
+  }
+  .credit-chip {
+    font-size: 9px;
+    padding: 4px 6px;
+  }
+  .app-notice {
+    margin: 10px 14px;
+    font-size: 11px;
+  }
+  .on-start .start-composer-actions .upload-error {
+    display: block;
+    max-width: 170px;
+  }
+  body:has(.in-studio) #toast {
+    bottom: 160px;
+  }
+  .studio-confirm-actions p {
+    display: block;
+    max-width: 130px;
+    font-size: 9px;
+  }
+}
+
+/* Dark mode is an explicit local UI preference, with the same blue KIVAO accent. */
+html[data-theme='dark'] {
+  color-scheme: dark;
+  --ink: #dfebf7;
+  --text: #c5d7e8;
+  --muted: #a9bed0;
+  --line: #2c4057;
+  --sand: #101c2b;
+  --sky: #4b91ff;
+  --sky-ink: #9dc7ff;
+  --background: #101c2b;
+  --foreground: #dfebf7;
+}
+[data-theme='dark'] body {
+  background: #101c2b;
+  color: #dfebf7;
+}
+[data-theme='dark']
+  :is(
+    .rail,
+    .topbar,
+    .creation-nav,
+    .start-composer,
+    .start-tool,
+    .scene-card,
+    .studio-inputs,
+    .studio-area,
+    .studio-generate,
+    .studio-review-actions,
+    .studio-confirm-actions,
+    .dialog-header,
+    dialog,
+    .sample-settings summary,
+    .sample-size,
+    .config-panel,
+    .plan-main,
+    .design-objects article,
+    .secondary
+  ) {
+  background: #172639;
+  color: #dfebf7;
+  border-color: #2c4057;
+}
+[data-theme='dark']
+  :is(
+    .start-modes,
+    .studio-mode,
+    .studio-scene-choice,
+    .studio-plan-summary,
+    .studio-role,
+    .studio-role.ready,
+    .studio-binding,
+    .version-compare,
+    .studio-version-note,
+    .suggested-scene,
+    .search-field,
+    .start-suggestions button,
+    .facet-fields select,
+    .studio-config select,
+    .studio-prompt textarea,
+    .optional-note textarea,
+    .avatar,
+    .canvas-viewport,
+    .mobile-nav
+  ) {
+  background-color: #203249;
+  border-color: #344e69;
+  color: #d7e5f3;
+}
+[data-theme='dark']
+  :is(
+    .rail-link.active,
+    .start-modes button[aria-pressed='true'],
+    .studio-mode button[aria-pressed='true'],
+    .badge.available,
+    .mobile-nav > a.active:before
+  ) {
+  background: #24456e;
+  color: #bfdbff;
+}
+[data-theme='dark']
+  :is(
+    .rail-link,
+    .rail-help,
+    .rail-scenes,
+    .wordmark .desktop-breadcrumb,
+    .desktop-breadcrumb strong,
+    .text-link,
+    .start-heading > p,
+    .start-helper,
+    .start-tool p,
+    .scene-card-body > p,
+    .scene-facts,
+    .studio-prompt > span,
+    .studio-role > p,
+    .studio-role-label > span,
+    .studio-config .config-field > span,
+    .studio-generate p,
+    .studio-empty-state p,
+    .studio-examples article span,
+    .result-meta,
+    .result-select,
+    .studio-plan-list li p,
+    .studio-plan-head p,
+    .studio-plan-summary dt,
+    .studio-confirm-actions p,
+    .small-note,
+    .catalog-note,
+    .page-heading p,
+    .adapter-note,
+    .studio-title > div > span:not(.status),
+    .credit-chip,
+    .start-composer-actions > div > span,
+    .start-attachment small,
+    .api-samples,
+    .creation-card .small-label,
+    .page-footer
+  ) {
+  color: #acc2d7;
+}
+[data-theme='dark'] .on-start .start-prompt {
+  color: #dfebf7;
+}
+[data-theme='dark'] ::placeholder {
+  color: #a5b9cb;
+}
+[data-theme='dark'] .version-tabs button.active {
+  background: #75adff;
+  color: #102038;
+  border-color: #75adff;
+}
+[data-theme='dark'] .category-row button.active,
+[data-theme='dark'] .simple-tabs button.active {
+  background: #75adff;
+  color: #102038;
+}
+[data-theme='dark'] .badge {
+  background: #29415c;
+  color: #c0d3e6;
+}
+[data-theme='dark'] .app-notice {
+  background: #3c3021;
+  color: #f8d69a;
+}
+[data-theme='dark'] .inline-error,
+[data-theme='dark'] .upload-error {
+  color: #ffb6ad;
+}
+[data-theme='dark'] .missing-file {
+  background: #203249;
+  color: #c2d4e4;
+}
+[data-theme='dark'] .canvas-note {
+  background: #313128;
+  color: #f2e2bc;
+  border-color: #676345;
+}
+[data-theme='dark'] .canvas-node {
+  background: #172639;
+  color: #d7e5f3;
+  border-color: #344e69;
+}
+[data-theme='dark'] .canvas-note p,
+[data-theme='dark'] .canvas-note > span {
+  color: #d8c99d;
+}
+[data-theme='dark'] .canvas-viewport {
+  background-image: radial-gradient(#42586f 0.9px, transparent 0.9px);
+}
+[data-theme='dark'] .primary {
+  background: #2867cb;
+  color: #fff;
+}
+[data-theme='dark'] .primary:hover:not(:disabled) {
+  background: #2159b5;
+}
+[data-theme='dark'] .case-layout dl {
+  color: #acc2d7;
+}
+.studio-generate p[role='alert'] {
+  color: #a22e25;
+}
+[data-theme='dark'] .studio-generate p[role='alert'] {
+  color: #ffb6ad;
+}
+[data-theme='dark'] .on-start .start-tool .text-link:first-child,
+[data-theme='dark'] .on-start .start-attach-button,
+[data-theme='dark'] .example-card > div > b {
+  color: #b4d4ff;
+}
+[data-theme='dark'] .on-start .start-modes button[aria-pressed='false'] {
+  color: #acc2d7;
+}

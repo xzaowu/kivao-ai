@@ -1,8 +1,10 @@
 import { createContext, useContext, type ReactNode } from 'react';
 export interface UiActions {
   open: (title: string, body: ReactNode, className?: string) => void;
+  openLayer: (title: string, body: ReactNode, className?: string) => void;
+  dismiss: () => void;
   close: () => void;
-  notify: (text: string) => void;
+  notify: (text: string, action?: { label: string; run: () => void }) => void;
 }
 export const UiContext = createContext<UiActions | null>(null);
 export function useUi() {

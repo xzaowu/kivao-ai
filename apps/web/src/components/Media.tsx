@@ -1,3 +1,4 @@
+import { useUi } from './ui-context';
 import type { CSSProperties } from 'react';
 import { assetUrl, type AssetKey, type SceneDefinition } from '../data/catalog';
 import type { Output } from '../demo/model';
@@ -56,23 +57,50 @@ export function OutputMedia({
   output,
   ratio = '3:4',
   sceneId = '',
+  interactive = true,
 }: {
   output: Output;
   ratio?: string;
   sceneId?: string;
+  interactive?: boolean;
 }) {
+  const ui = useUi();
   return (
     <div
       style={{ '--output-ratio': ratio.replace(':', ' / ') } as CSSProperties}
       className={`output-visual ${output.layout} ${sceneId === 'tryon' ? 'fashion' : ''}`}
     >
-      {output.kind === 'video' ? (
+      {output.kind === 'text' ? (
+        <div className="video-text-output">
+          <span>手写预置示例 · 非实时语音识别</span>
+          <h3>台词示例稿</h3>
+          <pre>{output.body}</pre>
+          {interactive && (
+            <button
+              className="secondary"
+              onClick={() =>
+                void navigator.clipboard.writeText(output.body || '').then(
+                  () => ui.notify('已复制示例文稿'),
+                  () => ui.notify('复制失败，请手动选择文字复制。'),
+                )
+              }
+            >
+              复制示例文稿
+            </button>
+          )}
+        </div>
+      ) : output.kind === 'video' && !interactive ? (
+        <DemoImage
+          asset={output.poster || 'bakery'}
+          alt={output.title + ' · 预制演示短片'}
+        />
+      ) : output.kind === 'video' ? (
         <video
           controls
           playsInline
           preload="metadata"
-          poster={assetUrl('bakery')}
-          src={assetUrl('bakery-demo')}
+          poster={assetUrl(output.poster || 'bakery')}
+          src={assetUrl(output.asset)}
           aria-label="12秒静态素材剪辑演示"
         />
       ) : (
